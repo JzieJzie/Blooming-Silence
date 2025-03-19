@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poem Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function goToPoem(url) {
+            document.body.style.opacity = "0";
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500); // Fade-out effect before navigation
+        }
+    </script>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Wanna read?</h1>
+        <button class="poem-button" onclick="goToPoem('beloved-stranger.html')">Beloved Stranger</button>
+        <button class="poem-button" onclick="goToPoem('habol-sa-mga-bituin.html')">Habol sa mga Bituin</button>
+    </div>
+    <div class="credit">@ddd.j_a.v</div>
+</body>
+</html>
