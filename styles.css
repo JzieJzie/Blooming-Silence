@@ -147,3 +147,21 @@ body, html {
     color: gray;
     opacity: 1;
 }
+
+.credit-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: black;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.credit-button:hover {
+    background: white;
+    color: black;
+}
