@@ -176,9 +176,9 @@ body, html {
 }
 
 .text-box {
-    font-size: 2vw;
-    line-height: 1.7;
-    padding: 0 10px;
+  font-size: 1rem; /* Reduced from 1.2rem */
+  line-height: 1.6;
+  padding: 0 10px;
 }
 
 /* ===== GENERIC BUTTON (USED IN MKE PAGE) ===== */
