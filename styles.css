@@ -176,8 +176,8 @@ body, html {
 }
 
 .text-box {
-  font-size: 1vw;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 0.5;
   padding: 0 10px;
 }
 
