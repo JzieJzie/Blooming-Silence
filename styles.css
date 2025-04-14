@@ -1,7 +1,7 @@
-/* Import Montserrat Font */
+/* ===== FONT IMPORT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
-/* General Styles */
+/* ===== GLOBAL STYLES ===== */
 body, html {
     margin: 0;
     padding: 0;
@@ -28,14 +28,14 @@ body, html {
     height: 100vh;
 }
 
-/* Poem Buttons */
+/* Poem Menu Buttons */
 .poem-button {
     font-family: 'Montserrat', sans-serif;
     background: black;
     color: white;
     font-size: 4vw;
     padding: 15px 30px;
-    border: 2px solid white;
+    border: 1px solid white;
     cursor: pointer;
     margin-top: 20px;
     transition: background 0.3s ease-in-out, transform 0.1s ease-in-out, opacity 0.8s ease-in-out;
@@ -44,13 +44,11 @@ body, html {
     animation: fadeIn 1s forwards;
 }
 
-/* Hover Effect */
 .poem-button:hover {
     background: black;
     border-color: gray;
 }
 
-/* Click Effect */
 .poem-button:active {
     transform: scale(0.95);
     background: rgba(255, 255, 255, 0.2);
@@ -68,7 +66,7 @@ body, html {
     }
 }
 
-/* ===== POEM PAGE ===== */
+/* ===== POEM SLIDER PAGE ===== */
 .slider-container {
     display: flex;
     flex-direction: column;
@@ -78,7 +76,6 @@ body, html {
     filter: blur(0px);
 }
 
-/* Fade-in effect for poem slides */
 .slide {
     flex: 0 0 100vh;
     width: 100vw;
@@ -89,13 +86,11 @@ body, html {
     transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 
-/* Active Slide */
 .active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Poem Styling */
 .poem {
     background: rgba(0, 0, 0, 0.6);
     padding: 5vw;
@@ -105,12 +100,11 @@ body, html {
     max-width: 90vw;
 }
 
-/* Motion Blur Effect */
 .blurring {
     filter: blur(10px);
 }
 
-/* Return Button */
+/* ===== RETURN BUTTON ===== */
 .return {
     font-family: 'Montserrat', sans-serif;
     background: black;
@@ -121,24 +115,22 @@ body, html {
     cursor: pointer;
     margin-top: 20px;
     transition: background 0.3s ease-in-out, transform 0.1s ease-in-out, opacity 0.8s ease-in-out;
-    text-decoration: none; /* Removes underline */
+    text-decoration: none;
     display: block;
     margin: auto;
 }
 
-/* Hover Effect */
 .return:hover {
     background: black;
     border-color: gray;
 }
 
-/* Click Effect */
 .return:active {
     transform: scale(0.95);
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Credit Styling */
+/* ===== CREDITS LINK ===== */
 .credit {
     position: fixed;
     bottom: 20px;
@@ -156,7 +148,7 @@ body, html {
     background: black;
     padding: 8px 12px;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 25px;
     text-decoration: none;
     transition: 0.3s;
 }
@@ -164,4 +156,63 @@ body, html {
 .credit-button:hover {
     background: white;
     color: black;
+}
+
+/* ===== MKE REFLECTION PAGE ===== */
+body {
+    background-color: #111;
+    color: #f9f9f9;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.reflection-image {
+    width: 100%;
+    max-width: 900px;
+    display: block;
+    margin: 0 auto 40px auto;
+    border: 8px solid white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.text-box {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    padding: 0 10px;
+}
+
+/* ===== GENERIC BUTTON (USED IN MKE PAGE) ===== */
+.button {
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 40px;
 }
