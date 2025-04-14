@@ -181,6 +181,23 @@ body, html {
   padding: 0 10px;
 }
 
+/* Fade-in effect for reflection page */
+.fade-in {
+  opacity: 0;
+  animation: fadeInReflection 1s ease forwards;
+}
+
+@keyframes fadeInReflection {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ===== GENERIC BUTTON (USED IN MKE PAGE) ===== */
 .button {
     background-color: white;
