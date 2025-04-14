@@ -176,8 +176,8 @@ body, html {
 }
 
 .text-box {
-  font-size: 1rem; /* Reduced from 1.2rem */
-  line-height: 1.6;
+  font-size: 1vw;
+  line-height: 1;
   padding: 0 10px;
 }
 
