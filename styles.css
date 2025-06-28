@@ -10,9 +10,16 @@ html, body {
   height: 100%;
   width: 100%;
   text-align: center;
-  overflow-x: hidden;
-  overflow-y: auto;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+body.menu {
+  overflow-y: auto;
+}
+
+body.poem {
+  overflow: hidden;
 }
 
 /* MENU */
@@ -24,7 +31,6 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
-  overflow-y: auto;
   width: 100%;
   box-sizing: border-box;
 }
@@ -216,3 +222,4 @@ html, body {
   margin-top: 40px;
   width: 100%;
 }
+
