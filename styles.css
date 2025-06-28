@@ -26,6 +26,7 @@ body, html {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding: 0 5vw;
 }
 
 /* Poem Menu Buttons */
@@ -159,7 +160,6 @@ body, html {
 }
 
 /* ===== MKE REFLECTION PAGE ===== */
-
 .container {
     max-width: 1000px;
     margin: 40px auto;
@@ -176,8 +176,8 @@ body, html {
 }
 
 .text-box {
-  font-size: 10px;
-  line-height: 1;
+  font-size: 1.2rem;
+  line-height: 1.7;
   padding: 0 10px;
 }
 
@@ -225,4 +225,73 @@ body, html {
 .button-container {
     text-align: center;
     margin-top: 40px;
-} 
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Phones */
+@media (max-width: 600px) {
+    .poem {
+        font-size: 6vw;
+        padding: 6vw;
+    }
+
+    .poem-button,
+    .return {
+        font-size: 5vw;
+        padding: 12px 20px;
+    }
+
+    .credit-button {
+        font-size: 4vw;
+    }
+
+    .reflection-image {
+        border-width: 4px;
+        margin-bottom: 20px;
+    }
+
+    .text-box {
+        font-size: 1rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .poem {
+        font-size: 3.5vw;
+    }
+
+    .poem-button,
+    .return {
+        font-size: 3.5vw;
+    }
+
+    .credit-button {
+        font-size: 3vw;
+    }
+
+    .text-box {
+        font-size: 1.1rem;
+    }
+}
+
+/* Laptops and Desktops */
+@media (min-width: 1025px) {
+    .poem {
+        font-size: 2vw;
+    }
+
+    .poem-button,
+    .return {
+        font-size: 1.8vw;
+    }
+
+    .credit-button {
+        font-size: 1.5vw;
+    }
+
+    .text-box {
+        font-size: 1.2rem;
+    }
+}
