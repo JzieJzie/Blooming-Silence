@@ -1,0 +1,20 @@
+{
+  "name": "bloomingsilence",
+  "version": "1.0.0",
+  "description": "A collection of poetry exploring love, loss, and the human experience",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "poetry",
+    "poems",
+    "literature",
+    "love",
+    "emotions"
+  ],
+  "author": "@ddd.j_a.v",
+  "license": "ISC"
+}
