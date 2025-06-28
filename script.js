@@ -18,24 +18,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 200);
     }
 
-    // Fade-in effect when loading a page
+    // Fade-in effect
     document.body.style.opacity = "0";
     setTimeout(() => {
         document.body.style.transition = "opacity 1s ease-in-out";
         document.body.style.opacity = "1";
     }, 100);
 
-    // Scroll Navigation
-    document.addEventListener("wheel", (event) => {
-        if (event.deltaY > 0 && currentIndex < slides.length - 1) {
-            currentIndex++;
-        } else if (event.deltaY < 0 && currentIndex > 0) {
-            currentIndex--;
-        }
-        updateSlide(currentIndex);
-    });
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // Mobile Touch Support
+    // ===== DESKTOP Navigation =====
+    if (!isTouchDevice) {
+        // Click to advance
+        document.addEventListener("click", () => {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+                updateSlide(currentIndex);
+            }
+        });
+
+        // Scroll
+        document.addEventListener("wheel", (event) => {
+            if (event.deltaY > 0 && currentIndex < slides.length - 1) {
+                currentIndex++;
+            } else if (event.deltaY < 0 && currentIndex > 0) {
+                currentIndex--;
+            }
+            updateSlide(currentIndex);
+        });
+
+        // Arrow keys
+        document.addEventListener("keydown", (event) => {
+            if (
+                (event.key === "ArrowDown" || event.key === "ArrowRight") &&
+                currentIndex < slides.length - 1
+            ) {
+                currentIndex++;
+                updateSlide(currentIndex);
+            } else if (
+                (event.key === "ArrowUp" || event.key === "ArrowLeft") &&
+                currentIndex > 0
+            ) {
+                currentIndex--;
+                updateSlide(currentIndex);
+            }
+        });
+    }
+
+    // ===== MOBILE Swipe =====
     let touchStartY = 0;
     let touchEndY = 0;
 
@@ -47,14 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
         touchEndY = event.changedTouches[0].screenY;
         if (touchEndY < touchStartY - 50 && currentIndex < slides.length - 1) {
             currentIndex++;
+            updateSlide(currentIndex);
         }
         if (touchEndY > touchStartY + 50 && currentIndex > 0) {
             currentIndex--;
+            updateSlide(currentIndex);
         }
-        updateSlide(currentIndex);
     });
 
-    // Return Button Functionality
+    // ===== RETURN button =====
     const returnButton = document.getElementById("returnButton");
     if (returnButton) {
         returnButton.addEventListener("click", (event) => {
