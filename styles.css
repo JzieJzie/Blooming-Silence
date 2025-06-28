@@ -1,7 +1,5 @@
-/* ===== FONT IMPORT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
-/* ===== GLOBAL STYLES ===== */
 body, html {
     margin: 0;
     padding: 0;
@@ -10,8 +8,8 @@ body, html {
     background-color: black;
     color: white;
     text-align: center;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    overflow-y: auto;   /* Allow vertical scroll */
+    overflow-x: hidden;
+    overflow-y: auto; 
     min-height: 100%;
     width: 100%;
     display: flex;
@@ -20,7 +18,6 @@ body, html {
 }
 
 
-/* ===== MENU PAGE ===== */
 .menu-container {
     display: flex;
     flex-direction: column;
@@ -30,7 +27,6 @@ body, html {
     padding: 0 5vw;
 }
 
-/* Poem Menu Buttons */
 .poem-button {
     font-family: 'Montserrat', sans-serif;
     background: black;
@@ -56,7 +52,6 @@ body, html {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -68,7 +63,6 @@ body, html {
     }
 }
 
-/* ===== POEM SLIDER PAGE ===== */
 .slider-container {
     display: flex;
     flex-direction: column;
@@ -106,7 +100,6 @@ body, html {
     filter: blur(10px);
 }
 
-/* ===== RETURN BUTTON ===== */
 .return {
     font-family: 'Montserrat', sans-serif;
     background: black;
@@ -132,7 +125,6 @@ body, html {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* ===== CREDITS LINK ===== */
 .credit {
     position: fixed;
     bottom: 20px;
@@ -160,7 +152,6 @@ body, html {
     color: black;
 }
 
-/* ===== MKE REFLECTION PAGE ===== */
 .container {
     max-width: 1000px;
     margin: 40px auto;
@@ -182,7 +173,6 @@ body, html {
   padding: 0 10px;
 }
 
-/* Fade-in effect for reflection page */
 .fade-in {
   opacity: 0;
   animation: fadeInReflection 1s ease forwards;
@@ -199,7 +189,6 @@ body, html {
   }
 }
 
-/* ===== GENERIC BUTTON (USED IN MKE PAGE) ===== */
 .button {
     background-color: white;
     color: black;
@@ -228,9 +217,6 @@ body, html {
     margin-top: 40px;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-
-/* Phones */
 @media (max-width: 600px) {
     .poem {
         font-size: 6vw;
@@ -257,7 +243,6 @@ body, html {
     }
 }
 
-/* Tablets */
 @media (min-width: 601px) and (max-width: 1024px) {
     .poem {
         font-size: 3.5vw;
@@ -277,7 +262,6 @@ body, html {
     }
 }
 
-/* Laptops and Desktops */
 @media (min-width: 1025px) {
     .poem {
         font-size: 2vw;
