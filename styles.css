@@ -10,14 +10,15 @@ body, html {
     background-color: black;
     color: white;
     text-align: center;
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto;   /* Allow vertical scroll */
+    min-height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
+
 
 /* ===== MENU PAGE ===== */
 .menu-container {
