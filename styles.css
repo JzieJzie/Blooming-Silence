@@ -7,27 +7,29 @@ html, body {
   font-weight: 100;
   background-color: black;
   color: white;
-  overflow: hidden;
   height: 100%;
   width: 100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu-container {
-  padding: 2rem;
-  max-width: 90vw;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
+/* MENU */
+.menu-container {
+  min-height: 100vh;
+  padding: 5vh 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* BUTTONS */
 .poem-button {
   font-family: 'Montserrat', sans-serif;
   background: black;
@@ -36,8 +38,7 @@ html, body {
   padding: 15px 30px;
   border: 1px solid white;
   cursor: pointer;
-  margin: 20px 0;
-  transition: background 0.3s ease-in-out, transform 0.1s ease-in-out, opacity 0.8s ease-in-out;
+  transition: background 0.3s ease, transform 0.1s ease, opacity 0.8s ease;
   text-decoration: none;
   opacity: 0;
   animation: fadeIn 1s forwards;
@@ -65,24 +66,25 @@ html, body {
   }
 }
 
+/* SLIDER (POEM PAGE) */
 .slider-container {
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  transition: transform 0.8s ease-in-out, filter 0.4s ease-in-out;
+  transition: transform 0.8s ease, filter 0.4s ease;
   filter: blur(0px);
 }
 
 .slide {
   flex: 0 0 100vh;
   width: 100vw;
+  padding: 5vh 5vw;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-  padding: 5vh 5vw;
+  transition: opacity 0.8s ease, transform 0.8s ease;
   box-sizing: border-box;
 }
 
@@ -103,10 +105,12 @@ html, body {
   box-sizing: border-box;
 }
 
+/* BLUR TRANSITION */
 .blurring {
   filter: blur(10px);
 }
 
+/* RETURN BUTTON */
 .return {
   font-family: 'Montserrat', sans-serif;
   background: black;
@@ -116,7 +120,7 @@ html, body {
   border: 2px solid white;
   cursor: pointer;
   margin-top: 40px;
-  transition: background 0.3s ease-in-out, transform 0.1s ease-in-out, opacity 0.8s ease-in-out;
+  transition: background 0.3s ease, transform 0.1s ease;
   text-decoration: none;
   display: inline-block;
 }
@@ -131,45 +135,30 @@ html, body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* CREDIT */
 .credit {
   position: fixed;
   bottom: 20px;
   left: 20px;
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: gray;
-  opacity: 1;
 }
 
-.credit-button {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-  background: black;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 1.25rem;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.credit-button:hover {
-  background: white;
-  color: black;
-}
-
+/* REFLECTION PAGE */
 .container {
   max-width: 1000px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 60px auto 40px auto;
+  padding: 0 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .reflection-image {
   width: 100%;
   max-width: 900px;
-  display: block;
-  margin: 0 auto 40px auto;
+  margin-bottom: 40px;
   border: 8px solid white;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
 }
@@ -178,6 +167,8 @@ html, body {
   font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.6;
   padding: 0 10px;
+  max-width: 85ch;
+  margin: auto;
 }
 
 .fade-in {
@@ -196,6 +187,7 @@ html, body {
   }
 }
 
+/* GENERIC BUTTON */
 .button {
   background-color: white;
   color: black;
@@ -222,5 +214,5 @@ html, body {
 .button-container {
   text-align: center;
   margin-top: 40px;
+  width: 100%;
 }
- w
