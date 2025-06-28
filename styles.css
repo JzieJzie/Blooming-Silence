@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
-html, body {
+body, html {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
@@ -8,9 +8,13 @@ html, body {
     background-color: black;
     color: white;
     text-align: center;
-    overflow: hidden; 
-    height: 100vh;
-    width: 100vw;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-container {
@@ -19,8 +23,6 @@ html, body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
 .poem-button {
@@ -66,8 +68,6 @@ html, body {
     height: 100vh;
     transition: transform 0.8s ease-in-out, filter 0.4s ease-in-out;
     filter: blur(0px);
-    position: relative;
-    overflow: hidden;
 }
 
 .slide {
@@ -166,25 +166,25 @@ html, body {
 }
 
 .text-box {
-    font-size: 10px;
-    line-height: 1;
-    padding: 0 10px;
+  font-size: 10px;
+  line-height: 1;
+  padding: 0 10px;
 }
 
 .fade-in {
-    opacity: 0;
-    animation: fadeInReflection 1s ease forwards;
+  opacity: 0;
+  animation: fadeInReflection 1s ease forwards;
 }
 
 @keyframes fadeInReflection {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .button {
@@ -213,44 +213,4 @@ html, body {
 .button-container {
     text-align: center;
     margin-top: 40px;
-}
-
-@media (max-width: 768px) {
-    .poem-button,
-    .return {
-        font-size: 6vw;
-        padding: 12px 24px;
-    }
-
-    .poem {
-        font-size: 5vw;
-        padding: 8vw;
-    }
-
-    .credit {
-        font-size: 4vw;
-    }
-
-    .text-box {
-        font-size: 0.9rem;
-    }
-}
-
-@media (min-width: 769px) {
-    .poem-button,
-    .return {
-        font-size: 2vw;
-    }
-
-    .poem {
-        font-size: 2.2vw;
-    }
-
-    .credit {
-        font-size: 1.5vw;
-    }
-
-    .text-box {
-        font-size: 1.1rem;
-    }
-}
+} 
