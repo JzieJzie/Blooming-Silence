@@ -299,7 +299,22 @@ body.scrollable-page {
     transition: transform 0.3s ease;
 }
 
-.reflection-image:hover {
+/* Full-width image display for Minamahal Kong Estranghero */
+.reflection-image-full {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto var(--spacing-xl) auto;
+    border: 0.5px solid var(--border-color); /* 50% thinner border */
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    object-fit: contain; /* Ensures full image is visible */
+    max-height: 70vh; /* Prevents image from being too tall on mobile */
+}
+
+.reflection-image:hover, .reflection-image-full:hover {
     transform: none;
 }
 
@@ -361,6 +376,23 @@ body.scrollable-page {
 }
 
 .menu-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+/* Scrollbar styling for scrollable pages */
+.scrollable-page::-webkit-scrollbar {
+    width: 1px; /* 50% thinner */
+}
+
+.scrollable-page::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+.scrollable-page::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+}
+
+.scrollable-page::-webkit-scrollbar-thumb:hover {
     background: var(--text-primary);
 }
 
@@ -440,8 +472,9 @@ body.scrollable-page {
         font-size: var(--font-sm);
     }
     
-    .reflection-image {
+    .reflection-image, .reflection-image-full {
         max-width: 95vw;
+        max-height: 60vh;
     }
 }
 
@@ -495,6 +528,11 @@ body.scrollable-page {
         bottom: var(--spacing-sm);
         left: var(--spacing-sm);
     }
+    
+    .reflection-image-full {
+        max-width: 90vw;
+        max-height: 65vh;
+    }
 }
 
 /* Large phones (481px - 768px) */
@@ -520,6 +558,11 @@ body.scrollable-page {
     .scrollable-container {
         padding-bottom: calc(var(--spacing-xl) + 60px);
     }
+    
+    .reflection-image-full {
+        max-width: 85vw;
+        max-height: 70vh;
+    }
 }
 
 /* Tablets (769px - 1024px) */
@@ -541,6 +584,11 @@ body.scrollable-page {
     .menu-container h1 {
         margin-bottom: var(--spacing-xl);
     }
+    
+    .reflection-image-full {
+        max-width: 80vw;
+        max-height: 75vh;
+    }
 }
 
 /* Desktop (1025px - 1440px) */
@@ -556,6 +604,11 @@ body.scrollable-page {
     
     .button-group {
         max-width: 550px;
+    }
+    
+    .reflection-image-full {
+        max-width: 70vw;
+        max-height: 80vh;
     }
 }
 
@@ -585,6 +638,11 @@ body.scrollable-page {
     
     .button-group {
         max-width: 600px;
+    }
+    
+    .reflection-image-full {
+        max-width: 60vw;
+        max-height: 80vh;
     }
 }
 
@@ -629,6 +687,10 @@ body.scrollable-page {
         bottom: var(--spacing-xs);
         left: var(--spacing-xs);
         font-size: var(--font-xs);
+    }
+    
+    .reflection-image-full {
+        max-height: 50vh;
     }
 }
 
