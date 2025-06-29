@@ -414,12 +414,14 @@ body.scrollable-page {
         --font-4xl: 3.5rem;
     }
 
-    /* Mobile Menu Container - 20:9 aspect ratio */
+    /* Mobile Menu Container - 20:9 aspect ratio (portrait) */
     .menu-container {
         height: 100vh;
         width: 100vw;
-        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
-        max-height: calc(100vw * 9 / 20); /* Inverse for landscape */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         margin: 0 auto;
         padding: var(--spacing-lg);
         padding-bottom: 100px;
@@ -429,19 +431,24 @@ body.scrollable-page {
         -webkit-overflow-scrolling: touch;
     }
 
-    /* Mobile Slider Container - 20:9 aspect ratio */
+    /* Mobile Slider Container - 20:9 aspect ratio (portrait) */
     .slider-container {
         width: 100vw;
         height: 100vh;
-        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
-        max-height: calc(100vw * 9 / 20); /* Inverse for landscape */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         margin: 0 auto;
     }
 
-    /* Mobile Scrollable Container - 20:9 aspect ratio */
+    /* Mobile Scrollable Container - 20:9 aspect ratio (portrait) */
     .scrollable-container {
         width: 100vw;
-        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         margin: 0 auto;
         padding: var(--spacing-lg);
         padding-bottom: 100px;
@@ -449,7 +456,10 @@ body.scrollable-page {
 
     .container {
         width: 100vw;
-        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         margin: 0 auto;
         padding: var(--spacing-lg);
     }
@@ -555,23 +565,35 @@ body.scrollable-page {
     }
 
     .menu-container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         padding: var(--spacing-md);
         padding-bottom: 90px;
     }
 
     .slider-container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
     }
 
     .scrollable-container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         padding: var(--spacing-md);
         padding-bottom: 90px;
     }
 
     .container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        /* For portrait mobile: height should be 20/9 times the width */
+        max-height: calc(100vw * 20 / 9);
+        /* For very tall screens: width should be 9/20 times the height */
+        max-width: calc(100vh * 9 / 20);
         padding: var(--spacing-md);
     }
 
@@ -615,24 +637,29 @@ body.scrollable-page {
     }
 }
 
-/* Landscape orientation adjustments for mobile - Maintain 20:9 ratio */
+/* Landscape orientation adjustments for mobile */
 @media (max-width: 768px) and (orientation: landscape) and (max-height: 600px) {
+    /* In landscape, we flip the ratio - width should be 20/9 times the height */
     .menu-container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        max-width: calc(100vh * 20 / 9);
+        max-height: calc(100vw * 9 / 20);
         padding: var(--spacing-sm);
         padding-bottom: 80px;
     }
 
     .slider-container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        max-width: calc(100vh * 20 / 9);
+        max-height: calc(100vw * 9 / 20);
     }
 
     .scrollable-container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        max-width: calc(100vh * 20 / 9);
+        max-height: calc(100vw * 9 / 20);
     }
 
     .container {
-        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        max-width: calc(100vh * 20 / 9);
+        max-height: calc(100vw * 9 / 20);
     }
     
     .menu-container h1 {
