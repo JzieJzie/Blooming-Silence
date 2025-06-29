@@ -94,7 +94,7 @@ body, html {
     padding-bottom: var(--spacing-xl);
 }
 
-/* Responsive button system - sharp corners, thinner borders */
+/* Responsive button system - sharp corners, 50% thinner borders */
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100; /* Montserrat Thin */
@@ -102,7 +102,7 @@ body, html {
     color: var(--text-primary);
     font-size: var(--font-lg);
     padding: var(--spacing-md) var(--spacing-lg);
-    border: 0.75px solid var(--border-color); /* 25% thinner border */
+    border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     cursor: pointer;
     margin: 0;
@@ -212,12 +212,12 @@ body, html {
     filter: blur(10px);
 }
 
-/* Return button specific styling - sharp corners, thinner border */
+/* Return button specific styling - sharp corners, 50% thinner border */
 .return {
     background: var(--primary-bg);
     color: var(--text-primary);
     font-weight: 100; /* Montserrat Thin */
-    border: 0.75px solid var(--border-color); /* 25% thinner border */
+    border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     box-shadow: none;
 }
@@ -262,14 +262,14 @@ body, html {
     box-shadow: none;
 }
 
-/* Reflection page specific styles - sharp corners, thinner border */
+/* Reflection page specific styles - sharp corners, 50% thinner border */
 .reflection-image {
     width: 100%;
     max-width: min(90vw, 600px);
     height: auto;
     display: block;
     margin: 0 auto var(--spacing-xl) auto;
-    border: 0.75px solid var(--border-color); /* 25% thinner border */
+    border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease;
@@ -285,7 +285,7 @@ body, html {
     line-height: 1.8;
     padding: var(--spacing-lg);
     background: var(--secondary-bg);
-    border: 0.75px solid var(--border-color); /* 25% thinner border */
+    border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     margin: var(--spacing-lg) 0;
     box-shadow: none;
@@ -323,9 +323,9 @@ body, html {
     align-items: center;
 }
 
-/* Scrollbar styling for menu container - sharp design, thinner */
+/* Scrollbar styling for menu container - sharp design, 50% thinner */
 .menu-container::-webkit-scrollbar {
-    width: 1.5px; /* 25% thinner */
+    width: 1px; /* 50% thinner */
 }
 
 .menu-container::-webkit-scrollbar-track {
@@ -539,9 +539,9 @@ body, html {
     }
 }
 
-/* Focus styles for accessibility - thinner border */
+/* Focus styles for accessibility - 50% thinner border */
 .poem-button:focus, .button:focus, .credit-button:focus {
-    outline: 0.75px solid var(--accent-color); /* 25% thinner outline */
+    outline: 0.5px solid var(--accent-color); /* 50% thinner outline */
     outline-offset: 2px;
 }
 
