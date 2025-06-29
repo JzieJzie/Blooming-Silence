@@ -73,6 +73,7 @@ body, html {
 }
 
 .menu-container h1 {
+    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-3xl);
     font-weight: 300;
     margin-bottom: var(--spacing-lg);
@@ -93,7 +94,7 @@ body, html {
     padding-bottom: var(--spacing-xl);
 }
 
-/* Responsive button system - sharp corners, line borders */
+/* Responsive button system - sharp corners, thinner borders */
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -101,7 +102,7 @@ body, html {
     color: var(--text-primary);
     font-size: var(--font-lg);
     padding: var(--spacing-md) var(--spacing-lg);
-    border: 1px solid var(--border-color);
+    border: 0.75px solid var(--border-color); /* 25% thinner border */
     border-radius: 0;
     cursor: pointer;
     margin: 0;
@@ -176,11 +177,12 @@ body, html {
     opacity: 1;
 }
 
-/* Responsive poem styling - sharp corners, line borders */
+/* Responsive poem styling - NO BORDERS */
 .poem {
+    font-family: 'Montserrat', sans-serif;
     background: var(--secondary-bg);
     padding: var(--spacing-xl);
-    border: 1px solid var(--border-color);
+    border: none; /* Removed border */
     border-radius: 0;
     font-size: var(--font-lg);
     line-height: 1.8;
@@ -196,11 +198,13 @@ body, html {
 }
 
 .poem p {
+    font-family: 'Montserrat', sans-serif;
     position: relative;
     z-index: 1;
     margin: 0;
     text-shadow: none;
     color: var(--text-primary);
+    font-weight: 300;
 }
 
 /* Blur effect */
@@ -208,12 +212,12 @@ body, html {
     filter: blur(10px);
 }
 
-/* Return button specific styling - sharp corners */
+/* Return button specific styling - sharp corners, thinner border */
 .return {
     background: var(--primary-bg);
     color: var(--text-primary);
     font-weight: 500;
-    border: 1px solid var(--border-color);
+    border: 0.75px solid var(--border-color); /* 25% thinner border */
     border-radius: 0;
     box-shadow: none;
 }
@@ -224,7 +228,7 @@ body, html {
     box-shadow: none;
 }
 
-/* Credit styling - responsive */
+/* Credit styling - responsive, NO BORDER */
 .credit, .credit-button {
     position: fixed;
     bottom: var(--spacing-md);
@@ -232,6 +236,7 @@ body, html {
     font-size: var(--font-sm);
     z-index: 1000;
     transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .credit {
@@ -243,7 +248,7 @@ body, html {
     color: var(--text-primary);
     background: var(--secondary-bg);
     padding: var(--spacing-sm) var(--spacing-md);
-    border: 1px solid var(--border-color);
+    border: none; /* Removed border */
     border-radius: 0;
     text-decoration: none;
     font-weight: 400;
@@ -256,14 +261,14 @@ body, html {
     box-shadow: none;
 }
 
-/* Reflection page specific styles - sharp corners */
+/* Reflection page specific styles - sharp corners, thinner border */
 .reflection-image {
     width: 100%;
     max-width: min(90vw, 600px);
     height: auto;
     display: block;
     margin: 0 auto var(--spacing-xl) auto;
-    border: 1px solid var(--border-color);
+    border: 0.75px solid var(--border-color); /* 25% thinner border */
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease;
@@ -274,20 +279,23 @@ body, html {
 }
 
 .text-box {
+    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-base);
     line-height: 1.8;
     padding: var(--spacing-lg);
     background: var(--secondary-bg);
-    border: 1px solid var(--border-color);
+    border: 0.75px solid var(--border-color); /* 25% thinner border */
     border-radius: 0;
     margin: var(--spacing-lg) 0;
     box-shadow: none;
 }
 
 .text-box p {
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: var(--spacing-md);
     text-align: left;
     color: var(--text-primary);
+    font-weight: 300;
 }
 
 .text-box p:last-child {
@@ -314,9 +322,9 @@ body, html {
     align-items: center;
 }
 
-/* Scrollbar styling for menu container - sharp design */
+/* Scrollbar styling for menu container - sharp design, thinner */
 .menu-container::-webkit-scrollbar {
-    width: 2px;
+    width: 1.5px; /* 25% thinner */
 }
 
 .menu-container::-webkit-scrollbar-track {
@@ -530,9 +538,9 @@ body, html {
     }
 }
 
-/* Focus styles for accessibility */
+/* Focus styles for accessibility - thinner border */
 .poem-button:focus, .button:focus, .credit-button:focus {
-    outline: 1px solid var(--accent-color);
+    outline: 0.75px solid var(--accent-color); /* 25% thinner outline */
     outline-offset: 2px;
 }
 
@@ -561,7 +569,7 @@ body, html {
     
     .poem {
         background: white;
-        border: 1px solid black;
+        border: none;
         box-shadow: none;
         page-break-inside: avoid;
     }
