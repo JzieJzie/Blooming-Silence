@@ -1,20 +1,14 @@
 {
   "name": "bloomingsilence",
   "version": "1.0.0",
-  "description": "A collection of poetry exploring love, loss, and the human experience",
+  "description": "A static website for Blooming Silence",
   "main": "index.html",
   "scripts": {
-    "dev": "python3 -m http.server 3000",
-    "start": "python3 -m http.server 3000",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [
-    "poetry",
-    "poems",
-    "literature",
-    "love",
-    "emotions"
-  ],
-  "author": "@ddd.j_a.v",
-  "license": "ISC"
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
 }
