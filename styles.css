@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
 
-/* CSS Custom Properties for consistent theming */
+/* CSS Custom Properties for pure black theme */
 :root {
-    --primary-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
-    --secondary-bg: rgba(255, 255, 255, 0.05);
+    --primary-bg: #000000;
+    --secondary-bg: #000000;
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
     --accent-color: #ffffff;
-    --border-color: rgba(255, 255, 255, 0.2);
-    --hover-bg: rgba(255, 255, 255, 0.1);
+    --border-color: #ffffff;
+    --hover-bg: #111111;
     --shadow-light: rgba(255, 255, 255, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --shadow-dark: rgba(0, 0, 0, 0.8);
     
     /* Responsive spacing system */
     --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
@@ -29,11 +29,6 @@
     --font-2xl: clamp(2rem, 6vw, 3rem);
     --font-3xl: clamp(2.5rem, 8vw, 4rem);
     --font-4xl: clamp(3rem, 10vw, 5rem);
-    
-    /* Responsive border radius */
-    --radius-sm: clamp(4px, 1vw, 8px);
-    --radius-md: clamp(8px, 2vw, 12px);
-    --radius-lg: clamp(12px, 3vw, 20px);
 }
 
 /* Reset and base styles */
@@ -74,17 +69,15 @@ body, html {
     max-width: 100vw;
     overflow-y: auto;
     overflow-x: hidden;
+    background: var(--primary-bg);
 }
 
 .menu-container h1 {
     font-size: var(--font-3xl);
     font-weight: 300;
     margin-bottom: var(--spacing-lg);
-    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 2px 4px var(--shadow-dark);
+    color: var(--text-primary);
+    text-shadow: none;
     letter-spacing: clamp(-0.02em, 0.1vw, 0.02em);
     flex-shrink: 0;
 }
@@ -100,18 +93,16 @@ body, html {
     padding-bottom: var(--spacing-xl);
 }
 
-/* Responsive button system */
+/* Responsive button system - sharp corners, line borders */
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     background: var(--secondary-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     color: var(--text-primary);
     font-size: var(--font-lg);
     padding: var(--spacing-md) var(--spacing-lg);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
+    border-radius: 0;
     cursor: pointer;
     margin: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,10 +113,7 @@ body, html {
     min-width: 280px;
     position: relative;
     overflow: hidden;
-    box-shadow: 
-        0 4px 6px var(--shadow-dark),
-        0 1px 3px var(--shadow-dark),
-        inset 0 1px 0 var(--shadow-light);
+    box-shadow: none;
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -138,7 +126,7 @@ body, html {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     transition: left 0.5s ease;
 }
 
@@ -149,18 +137,14 @@ body, html {
 .poem-button:hover, .button:hover {
     background: var(--hover-bg);
     border-color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 
-        0 8px 25px var(--shadow-dark),
-        0 4px 10px var(--shadow-dark),
-        inset 0 1px 0 var(--shadow-light);
+    transform: none;
+    box-shadow: none;
 }
 
 .poem-button:active, .button:active {
-    transform: translateY(0);
-    box-shadow: 
-        0 2px 4px var(--shadow-dark),
-        inset 0 1px 0 var(--shadow-light);
+    transform: none;
+    box-shadow: none;
+    background: var(--hover-bg);
 }
 
 /* Slider container - responsive */
@@ -172,6 +156,7 @@ body, html {
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
     filter: blur(0px);
     position: relative;
+    background: var(--primary-bg);
 }
 
 .slide {
@@ -184,48 +169,38 @@ body, html {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     padding: var(--spacing-lg);
     position: relative;
+    background: var(--primary-bg);
 }
 
 .slide.active {
     opacity: 1;
 }
 
-/* Responsive poem styling */
+/* Responsive poem styling - sharp corners, line borders */
 .poem {
     background: var(--secondary-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     padding: var(--spacing-xl);
-    border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
+    border-radius: 0;
     font-size: var(--font-lg);
     line-height: 1.8;
     max-width: min(90vw, 800px);
     width: 100%;
-    box-shadow: 
-        0 8px 32px var(--shadow-dark),
-        0 4px 16px var(--shadow-dark),
-        inset 0 1px 0 var(--shadow-light);
+    box-shadow: none;
     position: relative;
     overflow: hidden;
 }
 
 .poem::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
-    pointer-events: none;
+    display: none;
 }
 
 .poem p {
     position: relative;
     z-index: 1;
     margin: 0;
-    text-shadow: 0 1px 2px var(--shadow-dark);
+    text-shadow: none;
+    color: var(--text-primary);
 }
 
 /* Blur effect */
@@ -233,23 +208,20 @@ body, html {
     filter: blur(10px);
 }
 
-/* Return button specific styling */
+/* Return button specific styling - sharp corners */
 .return {
-    background: var(--accent-color);
-    color: #000000;
+    background: var(--primary-bg);
+    color: var(--text-primary);
     font-weight: 500;
-    border: 2px solid var(--accent-color);
-    box-shadow: 
-        0 4px 15px rgba(255, 255, 255, 0.2),
-        0 2px 8px rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .return:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-3px);
-    box-shadow: 
-        0 8px 25px rgba(255, 255, 255, 0.3),
-        0 4px 15px rgba(255, 255, 255, 0.2);
+    background: var(--hover-bg);
+    transform: none;
+    box-shadow: none;
 }
 
 /* Credit styling - responsive */
@@ -270,39 +242,35 @@ body, html {
 .credit-button {
     color: var(--text-primary);
     background: var(--secondary-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-sm);
-    text-decoration: none;
     border: 1px solid var(--border-color);
+    border-radius: 0;
+    text-decoration: none;
     font-weight: 400;
-    box-shadow: 0 2px 8px var(--shadow-dark);
+    box-shadow: none;
 }
 
 .credit-button:hover {
     background: var(--hover-bg);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--shadow-dark);
+    transform: none;
+    box-shadow: none;
 }
 
-/* Reflection page specific styles */
+/* Reflection page specific styles - sharp corners */
 .reflection-image {
     width: 100%;
     max-width: min(90vw, 600px);
     height: auto;
     display: block;
     margin: 0 auto var(--spacing-xl) auto;
-    border: clamp(4px, 1vw, 8px) solid var(--accent-color);
-    border-radius: var(--radius-md);
-    box-shadow: 
-        0 8px 32px var(--shadow-dark),
-        0 4px 16px var(--shadow-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: none;
     transition: transform 0.3s ease;
 }
 
 .reflection-image:hover {
-    transform: scale(1.02);
+    transform: none;
 }
 
 .text-box {
@@ -310,19 +278,16 @@ body, html {
     line-height: 1.8;
     padding: var(--spacing-lg);
     background: var(--secondary-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
+    border-radius: 0;
     margin: var(--spacing-lg) 0;
-    box-shadow: 
-        0 8px 32px var(--shadow-dark),
-        inset 0 1px 0 var(--shadow-light);
+    box-shadow: none;
 }
 
 .text-box p {
     margin-bottom: var(--spacing-md);
     text-align: left;
+    color: var(--text-primary);
 }
 
 .text-box p:last-child {
@@ -333,6 +298,37 @@ body, html {
     text-align: center;
     margin-top: var(--spacing-xl);
     padding: var(--spacing-md);
+}
+
+/* Container for reflection page */
+.container {
+    width: 100%;
+    max-width: min(90vw, 1200px);
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    background: var(--primary-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Scrollbar styling for menu container - sharp design */
+.menu-container::-webkit-scrollbar {
+    width: 2px;
+}
+
+.menu-container::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+}
+
+.menu-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
 }
 
 /* Fade-in animations */
@@ -350,25 +346,6 @@ body, html {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Scrollbar styling for menu container */
-.menu-container::-webkit-scrollbar {
-    width: 6px;
-}
-
-.menu-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-}
-
-.menu-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-}
-
-.menu-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive breakpoints */
@@ -553,18 +530,22 @@ body, html {
     }
 }
 
-/* Dark mode support (if system preference changes) */
-@media (prefers-color-scheme: light) {
-    :root {
-        --primary-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
-        --text-primary: #212529;
-        --text-secondary: #6c757d;
-        --border-color: rgba(0, 0, 0, 0.1);
-        --secondary-bg: rgba(255, 255, 255, 0.8);
-        --hover-bg: rgba(0, 0, 0, 0.05);
-        --shadow-light: rgba(255, 255, 255, 0.8);
-        --shadow-dark: rgba(0, 0, 0, 0.1);
-    }
+/* Focus styles for accessibility */
+.poem-button:focus, .button:focus, .credit-button:focus {
+    outline: 1px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Error states */
+.error {
+    border-color: #ffffff;
+    background: var(--primary-bg);
 }
 
 /* Print styles */
@@ -584,22 +565,4 @@ body, html {
         box-shadow: none;
         page-break-inside: avoid;
     }
-}
-
-/* Focus styles for accessibility */
-.poem-button:focus, .button:focus, .credit-button:focus {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
-
-/* Loading states */
-.loading {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-/* Error states */
-.error {
-    border-color: #dc3545;
-    background: rgba(220, 53, 69, 0.1);
 }
