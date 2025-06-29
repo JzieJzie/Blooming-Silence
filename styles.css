@@ -299,19 +299,19 @@ body.scrollable-page {
     transition: transform 0.3s ease;
 }
 
-/* Full-width image display for Minamahal Kong Estranghero */
+/* Full-width image display for Minamahal Kong Estranghero - COMPLETELY UNRESTRICTED */
 .reflection-image-full {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
+    width: auto; /* Let image determine its own width */
+    max-width: 95vw; /* Only limit to viewport width */
+    height: auto; /* Maintain aspect ratio */
     display: block;
     margin: 0 auto var(--spacing-xl) auto;
     border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease;
-    object-fit: contain; /* Ensures full image is visible */
-    max-height: 70vh; /* Prevents image from being too tall on mobile */
+    object-fit: none; /* Don't constrain the image fitting */
+    /* Removed max-height constraint to show full image */
 }
 
 .reflection-image:hover, .reflection-image-full:hover {
@@ -472,9 +472,8 @@ body.scrollable-page {
         font-size: var(--font-sm);
     }
     
-    .reflection-image, .reflection-image-full {
-        max-width: 95vw;
-        max-height: 60vh;
+    .reflection-image-full {
+        max-width: 98vw; /* Allow almost full width on tiny screens */
     }
 }
 
@@ -530,8 +529,7 @@ body.scrollable-page {
     }
     
     .reflection-image-full {
-        max-width: 90vw;
-        max-height: 65vh;
+        max-width: 95vw;
     }
 }
 
@@ -560,8 +558,7 @@ body.scrollable-page {
     }
     
     .reflection-image-full {
-        max-width: 85vw;
-        max-height: 70vh;
+        max-width: 90vw;
     }
 }
 
@@ -586,8 +583,7 @@ body.scrollable-page {
     }
     
     .reflection-image-full {
-        max-width: 80vw;
-        max-height: 75vh;
+        max-width: 85vw;
     }
 }
 
@@ -607,8 +603,7 @@ body.scrollable-page {
     }
     
     .reflection-image-full {
-        max-width: 70vw;
-        max-height: 80vh;
+        max-width: 80vw;
     }
 }
 
@@ -641,8 +636,7 @@ body.scrollable-page {
     }
     
     .reflection-image-full {
-        max-width: 60vw;
-        max-height: 80vh;
+        max-width: 75vw;
     }
 }
 
@@ -690,7 +684,7 @@ body.scrollable-page {
     }
     
     .reflection-image-full {
-        max-height: 50vh;
+        max-width: 90vw; /* Allow more width in landscape */
     }
 }
 
