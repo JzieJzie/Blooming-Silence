@@ -1,0 +1,796 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
+
+/* CSS Custom Properties for pure black theme */
+:root {
+    --primary-bg: #000000;
+    --secondary-bg: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-color: #ffffff;
+    --border-color: #ffffff;
+    --hover-bg: #111111;
+    --shadow-light: rgba(255, 255, 255, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.8);
+    
+    /* Responsive spacing and typography */
+    --spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+    --spacing-sm: clamp(1rem, 2vw, 1.25rem);
+    --spacing-md: clamp(1.5rem, 3vw, 2rem);
+    --spacing-lg: clamp(2rem, 4vw, 3rem);
+    --spacing-xl: clamp(2.5rem, 5vw, 4rem);
+    --spacing-xxl: clamp(3rem, 6vw, 5rem);
+    
+    --font-xs: clamp(1rem, 2.5vw, 0.875rem);
+    --font-sm: clamp(1.125rem, 3vw, 1rem);
+    --font-base: clamp(1.25rem, 3.5vw, 1.125rem);
+    --font-lg: clamp(1.5rem, 4vw, 1.5rem);
+    --font-xl: clamp(2rem, 5vw, 2rem);
+    --font-2xl: clamp(2.5rem, 6vw, 3rem);
+    --font-3xl: clamp(3rem, 8vw, 4rem);
+    --font-4xl: clamp(3.5rem, 10vw, 5rem);
+}
+
+/* Reset and base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 100;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    position: relative;
+}
+
+/* Special styling for scrollable pages */
+body.scrollable-page {
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+}
+
+/* Scrollable container */
+.scrollable-container {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background: var(--primary-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 120px;
+}
+
+/* Menu container - unified design */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--primary-bg);
+    padding-bottom: 120px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--font-3xl);
+    font-weight: 100;
+    margin: var(--spacing-xl) 0;
+    color: var(--text-primary);
+    text-shadow: none;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+/* Button container - unified design */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: min(90vw, 600px);
+    padding: 0 var(--spacing-md);
+    flex: 1;
+    justify-content: flex-start;
+}
+
+/* Buttons - unified design */
+.poem-button, .button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+    font-size: var(--font-lg);
+    padding: var(--spacing-lg);
+    border: 0.5px solid var(--border-color);
+    border-radius: 0;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    min-height: clamp(60px, 8vw, 80px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    text-align: center;
+    line-height: 1.4;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.poem-button::before, .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.5s ease;
+}
+
+.poem-button:hover::before, .button:hover::before {
+    left: 100%;
+}
+
+.poem-button:hover, .button:hover {
+    background: var(--hover-bg);
+    border-color: var(--accent-color);
+    transform: none;
+    box-shadow: none;
+}
+
+.poem-button:active, .button:active {
+    transform: none;
+    box-shadow: none;
+    background: var(--hover-bg);
+}
+
+/* Slider container - unified design */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    filter: blur(0px);
+    position: relative;
+    background: var(--primary-bg);
+}
+
+.slide {
+    flex: 0 0 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: var(--spacing-lg);
+    position: relative;
+    background: var(--primary-bg);
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Poem styling - unified design */
+.poem {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--secondary-bg);
+    padding: var(--spacing-xl);
+    border: none;
+    border-radius: 0;
+    font-size: var(--font-lg);
+    line-height: 1.8;
+    width: 100%;
+    max-width: min(90vw, 800px);
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.poem p {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    text-shadow: none;
+    color: var(--text-primary);
+    font-weight: 100;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Return button - unified design */
+.return {
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    font-weight: 100;
+    border: 0.5px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.return:hover {
+    background: var(--hover-bg);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Credit button - unified design */
+.credit, .credit-button {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    left: var(--spacing-lg);
+    font-size: var(--font-sm);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    pointer-events: auto;
+}
+
+.credit {
+    color: var(--text-secondary);
+    opacity: 0.8;
+    font-weight: 100;
+}
+
+.credit-button {
+    color: var(--text-primary);
+    background: var(--secondary-bg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 0.5px solid var(--border-color);
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 100;
+    box-shadow: none;
+    white-space: nowrap;
+    min-height: clamp(44px, 6vw, 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credit-button:hover {
+    background: var(--hover-bg);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Reflection page styles - unified design */
+.reflection-image, .reflection-image-full {
+    width: 100%;
+    max-width: min(90vw, 600px);
+    height: auto;
+    display: block;
+    margin: 0 auto var(--spacing-xl) auto;
+    border: 0.5px solid var(--border-color);
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+}
+
+.reflection-image:hover, .reflection-image-full:hover {
+    transform: none;
+}
+
+.text-box {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--font-base);
+    line-height: 1.8;
+    padding: var(--spacing-lg);
+    background: var(--secondary-bg);
+    border: 0.5px solid var(--border-color);
+    border-radius: 0;
+    margin: var(--spacing-lg) 0;
+    box-shadow: none;
+    width: 100%;
+    max-width: min(90vw, 800px);
+}
+
+.text-box p {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+    color: var(--text-primary);
+    font-weight: 100;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.text-box p:last-child {
+    margin-bottom: 0;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: min(90vw, 1000px);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background: var(--primary-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Scrollbar styling - unified design */
+.menu-container::-webkit-scrollbar,
+.scrollable-page::-webkit-scrollbar {
+    width: 3px;
+}
+
+.menu-container::-webkit-scrollbar-track,
+.scrollable-page::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+.menu-container::-webkit-scrollbar-thumb,
+.scrollable-page::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 0;
+}
+
+.menu-container::-webkit-scrollbar-thumb:hover,
+.scrollable-page::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+/* Blur effect */
+.blurring {
+    filter: blur(10px);
+}
+
+/* Fade-in animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================================
+   RESPONSIVE BREAKPOINTS
+   =========================================== */
+
+/* Small phones (up to 374px) */
+@media (max-width: 374px) {
+    :root {
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --font-xs: 0.9rem;
+        --font-sm: 1rem;
+        --font-base: 1.125rem;
+        --font-lg: 1.25rem;
+        --font-xl: 1.5rem;
+        --font-2xl: 2rem;
+        --font-3xl: 2.5rem;
+    }
+    
+    .menu-container, .scrollable-container {
+        padding: var(--spacing-md);
+        padding-bottom: 90px;
+    }
+    
+    .button-group {
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .poem-button, .button {
+        font-size: var(--font-base);
+        padding: var(--spacing-md);
+        min-height: 56px;
+    }
+    
+    .credit-button {
+        bottom: var(--spacing-md);
+        left: var(--spacing-md);
+        font-size: var(--font-xs);
+        min-height: 40px;
+    }
+}
+
+/* Standard phones (375px - 480px) */
+@media (min-width: 375px) and (max-width: 480px) {
+    .menu-container, .scrollable-container {
+        padding: var(--spacing-lg);
+        padding-bottom: 100px;
+    }
+    
+    .poem-button, .button {
+        font-size: var(--font-lg);
+        padding: var(--spacing-lg);
+        min-height: 60px;
+    }
+}
+
+/* Large phones (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --font-base: 1.375rem;
+        --font-lg: 1.625rem;
+        --font-xl: 2.125rem;
+        --font-2xl: 2.75rem;
+        --font-3xl: 3.25rem;
+    }
+    
+    .menu-container, .scrollable-container {
+        padding: var(--spacing-xl);
+        padding-bottom: 110px;
+    }
+    
+    .button-group {
+        max-width: calc(100vw - 4rem);
+    }
+    
+    .poem-button, .button {
+        font-size: var(--font-xl);
+        min-height: 70px;
+    }
+    
+    .poem {
+        max-width: calc(100vw - 4rem);
+        padding: var(--spacing-xxl);
+    }
+    
+    .text-box {
+        max-width: calc(100vw - 4rem);
+        font-size: var(--font-lg);
+    }
+}
+
+/* Tablets and Desktop (769px+) */
+@media (min-width: 769px) {
+    :root {
+        --spacing-xs: 0.75rem;
+        --spacing-sm: 1.25rem;
+        --spacing-md: 2rem;
+        --spacing-lg: 3rem;
+        --spacing-xl: 4rem;
+        --spacing-xxl: 5rem;
+        
+        --font-xs: 0.875rem;
+        --font-sm: 1rem;
+        --font-base: 1.125rem;
+        --font-lg: 1.5rem;
+        --font-xl: 2rem;
+        --font-2xl: 3rem;
+        --font-3xl: 4rem;
+        --font-4xl: 5rem;
+    }
+
+    /* Desktop body adjustments */
+    body {
+        overflow: hidden;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    body.scrollable-page {
+        overflow: auto;
+        justify-content: flex-start;
+    }
+
+    /* Desktop containers */
+    .scrollable-container {
+        padding: var(--spacing-xl);
+        padding-bottom: 100px;
+        max-width: 1000px;
+    }
+
+    .menu-container {
+        height: 100vh;
+        padding: var(--spacing-xl);
+        padding-bottom: 100px;
+        overflow: hidden;
+        justify-content: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .menu-container h1 {
+        font-size: var(--font-3xl);
+        margin: var(--spacing-lg) 0 var(--spacing-xl) 0;
+    }
+
+    /* Desktop button container */
+    .button-group {
+        max-width: 600px;
+        gap: var(--spacing-md);
+    }
+
+    /* Desktop buttons */
+    .poem-button, .button {
+        font-size: var(--font-lg);
+        padding: var(--spacing-md) var(--spacing-lg);
+        min-height: 80px;
+    }
+
+    /* Desktop slider and poem */
+    .slide {
+        padding: var(--spacing-xl);
+    }
+
+    .poem {
+        padding: var(--spacing-xxl);
+        max-width: 800px;
+    }
+
+    /* Desktop credit button */
+    .credit, .credit-button {
+        bottom: var(--spacing-md);
+        left: var(--spacing-md);
+        font-size: var(--font-sm);
+    }
+
+    .credit-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: 40px;
+    }
+
+    /* Desktop reflection page */
+    .reflection-image, .reflection-image-full {
+        max-width: 600px;
+    }
+
+    .text-box {
+        font-size: var(--font-base);
+        padding: var(--spacing-xl);
+        max-width: 800px;
+    }
+
+    .button-container {
+        margin-top: var(--spacing-xxl);
+        padding: var(--spacing-xl);
+    }
+
+    .container {
+        max-width: 1000px;
+        padding: var(--spacing-xl);
+    }
+}
+
+/* Large desktop (1441px+) */
+@media (min-width: 1441px) {
+    :root {
+        --font-base: 1.25rem;
+        --font-lg: 1.75rem;
+        --font-xl: 2.25rem;
+        --font-2xl: 3.5rem;
+        --font-3xl: 4.5rem;
+        --font-4xl: 6rem;
+    }
+
+    .poem {
+        max-width: 1000px;
+        padding: 4rem;
+    }
+
+    .poem-button, .button {
+        font-size: var(--font-xl);
+        padding: 2rem 2.5rem;
+        min-height: 100px;
+    }
+
+    .button-group {
+        max-width: 700px;
+    }
+
+    .text-box {
+        max-width: 1000px;
+        font-size: var(--font-lg);
+    }
+
+    .reflection-image, .reflection-image-full {
+        max-width: 800px;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 600px) {
+    .menu-container, .scrollable-container {
+        padding: var(--spacing-md);
+        padding-bottom: 80px;
+    }
+    
+    .menu-container h1 {
+        margin: var(--spacing-md) 0;
+        font-size: var(--font-2xl);
+    }
+    
+    .button-group {
+        gap: var(--spacing-sm);
+    }
+    
+    .poem {
+        padding: var(--spacing-lg);
+        max-height: 70vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .poem-button, .button {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: var(--font-base);
+        min-height: 50px;
+    }
+    
+    .credit-button {
+        bottom: var(--spacing-sm);
+        left: var(--spacing-sm);
+        font-size: var(--font-xs);
+        min-height: 36px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .slider-container {
+        transition: none;
+    }
+    
+    .slide {
+        transition: none;
+    }
+}
+
+/* Focus styles for accessibility */
+.poem-button:focus, .button:focus, .credit-button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .poem-button:focus, .button:focus, .credit-button:focus {
+        outline: 0.5px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .poem-button, .button {
+        min-height: 60px;
+    }
+    
+    .credit-button {
+        min-height: 44px;
+        min-width: 80px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .poem-button:hover, .button:hover, .credit-button:hover {
+        background: var(--secondary-bg);
+        transform: none;
+    }
+    
+    /* Add active states for touch feedback */
+    .poem-button:active, .button:active {
+        background: var(--hover-bg);
+    }
+}
+
+/* Safe area adjustments for devices with notches */
+@supports (padding: max(0px)) {
+    @media (max-width: 768px) {
+        .menu-container, .scrollable-container {
+            padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
+            padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
+            padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
+        }
+        
+        .credit-button {
+            bottom: max(var(--spacing-lg), env(safe-area-inset-bottom) + var(--spacing-md));
+            left: max(var(--spacing-lg), env(safe-area-inset-left) + var(--spacing-md));
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .menu-container, .scrollable-container {
+            padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
+            padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
+            padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
+        }
+        
+        .credit-button {
+            bottom: max(var(--spacing-md), env(safe-area-inset-bottom) + var(--spacing-sm));
+            left: max(var(--spacing-md), env(safe-area-inset-left) + var(--spacing-sm));
+        }
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .credit-button, .button, .poem-button {
+        display: none;
+    }
+    
+    .poem {
+        background: white;
+        border: none;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}
+
+/* Loading and error states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.error {
+    border-color: #ffffff;
+    background: var(--primary-bg);
+}
