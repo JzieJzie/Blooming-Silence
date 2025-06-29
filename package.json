@@ -1,14 +1,18 @@
 {
-  "name": "bloomingsilence",
+  "name": "poetry-collection",
   "version": "1.0.0",
-  "description": "A static website for Blooming Silence",
+  "description": "A collection of poetry exploring love, loss, and the human experience",
   "main": "index.html",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "npx serve -s . -l 3000",
+    "start": "npx serve -s . -l 3000",
+    "build": "echo 'Static site - no build needed'",
+    "preview": "npx serve -s . -l 4173"
   },
+  "keywords": ["poetry", "literature", "static-site"],
+  "author": "@ddd.j_a.v",
+  "license": "MIT",
   "devDependencies": {
-    "vite": "^5.0.0"
+    "serve": "^14.2.1"
   }
 }
