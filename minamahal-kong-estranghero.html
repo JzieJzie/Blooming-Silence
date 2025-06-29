@@ -37,13 +37,6 @@
                 });
             }
 
-            // Smooth scroll for long content
-            const textBox = document.querySelector('.text-box');
-            if (textBox && textBox.scrollHeight > textBox.clientHeight) {
-                textBox.style.overflowY = 'auto';
-                textBox.style.scrollBehavior = 'smooth';
-            }
-
             // Keyboard navigation
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
@@ -53,8 +46,8 @@
         });
     </script>
 </head>
-<body class="fade-in">
-    <div class="container">
+<body class="fade-in scrollable-page">
+    <div class="scrollable-container">
         <img src="Images/mke-image.png" 
              alt="Reflection on love and discovery" 
              class="reflection-image"

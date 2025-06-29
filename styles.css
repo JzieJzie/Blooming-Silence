@@ -57,6 +57,29 @@ body, html {
     text-rendering: optimizeLegibility;
 }
 
+/* Special styling for scrollable pages */
+body.scrollable-page {
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+}
+
+/* Scrollable container for special pages */
+.scrollable-container {
+    width: 100%;
+    max-width: min(90vw, 1200px);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background: var(--primary-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: calc(var(--spacing-xl) + 60px); /* Extra space for credit button */
+}
+
 /* Menu container - fully responsive with scrollable content */
 .menu-container {
     display: flex;
@@ -70,6 +93,7 @@ body, html {
     overflow-y: auto;
     overflow-x: hidden;
     background: var(--primary-bg);
+    padding-bottom: calc(var(--spacing-xl) + 60px); /* Extra space for credit button */
 }
 
 .menu-container h1 {
@@ -228,7 +252,7 @@ body, html {
     box-shadow: none;
 }
 
-/* Credit styling - responsive, NO BORDER */
+/* Credit styling - responsive, NO BORDER, always visible */
 .credit, .credit-button {
     position: fixed;
     bottom: var(--spacing-md);
@@ -357,10 +381,72 @@ body, html {
     }
 }
 
-/* Responsive breakpoints */
+/* Mobile-first responsive breakpoints */
 
-/* Small phones (320px - 480px) */
-@media (max-width: 480px) {
+/* Extra small phones (320px - 374px) */
+@media (max-width: 374px) {
+    :root {
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 0.75rem;
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.5rem;
+        --spacing-xxl: 2rem;
+        --font-xs: 0.75rem;
+        --font-sm: 0.8rem;
+        --font-base: 0.9rem;
+        --font-lg: 1rem;
+        --font-xl: 1.25rem;
+        --font-2xl: 1.5rem;
+        --font-3xl: 2rem;
+    }
+    
+    .menu-container {
+        padding: var(--spacing-md);
+        padding-bottom: calc(var(--spacing-xl) + 50px);
+    }
+    
+    .scrollable-container {
+        padding: var(--spacing-md);
+        padding-bottom: calc(var(--spacing-xl) + 50px);
+    }
+    
+    .menu-container h1 {
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-2xl);
+    }
+    
+    .button-group {
+        gap: var(--spacing-xs);
+        max-width: 95vw;
+    }
+    
+    .poem-button, .button {
+        min-width: 240px;
+        max-width: 95vw;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-base);
+    }
+    
+    .credit-button {
+        bottom: var(--spacing-sm);
+        left: var(--spacing-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-xs);
+    }
+    
+    .text-box {
+        padding: var(--spacing-md);
+        font-size: var(--font-sm);
+    }
+    
+    .reflection-image {
+        max-width: 95vw;
+    }
+}
+
+/* Small phones (375px - 480px) */
+@media (min-width: 375px) and (max-width: 480px) {
     :root {
         --spacing-xs: 0.25rem;
         --spacing-sm: 0.5rem;
@@ -372,6 +458,12 @@ body, html {
     
     .menu-container {
         padding: var(--spacing-md);
+        padding-bottom: calc(var(--spacing-xl) + 60px);
+    }
+    
+    .scrollable-container {
+        padding: var(--spacing-md);
+        padding-bottom: calc(var(--spacing-xl) + 60px);
     }
     
     .menu-container h1 {
@@ -380,7 +472,7 @@ body, html {
     
     .button-group {
         gap: var(--spacing-xs);
-        padding-bottom: var(--spacing-lg);
+        max-width: 90vw;
     }
     
     .poem {
@@ -394,8 +486,14 @@ body, html {
     
     .poem-button, .button {
         min-width: 260px;
+        max-width: 90vw;
         padding: var(--spacing-md) var(--spacing-lg);
         font-size: var(--font-base);
+    }
+    
+    .credit-button {
+        bottom: var(--spacing-sm);
+        left: var(--spacing-sm);
     }
 }
 
@@ -413,6 +511,14 @@ body, html {
     
     .button-group {
         max-width: 450px;
+    }
+    
+    .menu-container {
+        padding-bottom: calc(var(--spacing-xl) + 60px);
+    }
+    
+    .scrollable-container {
+        padding-bottom: calc(var(--spacing-xl) + 60px);
     }
 }
 
@@ -486,6 +592,12 @@ body, html {
 @media (orientation: landscape) and (max-height: 600px) {
     .menu-container {
         padding: var(--spacing-sm);
+        padding-bottom: calc(var(--spacing-lg) + 50px);
+    }
+    
+    .scrollable-container {
+        padding: var(--spacing-sm);
+        padding-bottom: calc(var(--spacing-lg) + 50px);
     }
     
     .menu-container h1 {
@@ -511,6 +623,12 @@ body, html {
     .poem-button, .button {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: var(--font-base);
+    }
+    
+    .credit-button {
+        bottom: var(--spacing-xs);
+        left: var(--spacing-xs);
+        font-size: var(--font-xs);
     }
 }
 
