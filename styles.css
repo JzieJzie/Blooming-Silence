@@ -1,31 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
 
-/* CSS Custom Properties for pure black theme */
+/* CSS Custom Properties for consistent theming */
 :root {
-    --primary-bg: #000000;
-    --secondary-bg: #000000;
+    --primary-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    --secondary-bg: rgba(255, 255, 255, 0.05);
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
     --accent-color: #ffffff;
-    --border-color: #ffffff;
-    --hover-bg: #111111;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    --shadow-light: rgba(255, 255, 255, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
     
-    /* Base spacing and typography */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
+    /* Responsive spacing system */
+    --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+    --spacing-md: clamp(1rem, 3vw, 2rem);
+    --spacing-lg: clamp(1.5rem, 4vw, 3rem);
+    --spacing-xl: clamp(2rem, 5vw, 4rem);
+    --spacing-xxl: clamp(3rem, 8vw, 6rem);
     
-    --font-xs: 0.875rem;
-    --font-sm: 1rem;
-    --font-base: 1.125rem;
-    --font-lg: 1.5rem;
-    --font-xl: 2rem;
-    --font-2xl: 3rem;
-    --font-3xl: 4rem;
-    --font-4xl: 5rem;
+    /* Responsive font sizes */
+    --font-xs: clamp(0.75rem, 2.5vw, 0.875rem);
+    --font-sm: clamp(0.875rem, 3vw, 1rem);
+    --font-base: clamp(1rem, 3.5vw, 1.125rem);
+    --font-lg: clamp(1.125rem, 4vw, 1.5rem);
+    --font-xl: clamp(1.5rem, 5vw, 2rem);
+    --font-2xl: clamp(2rem, 6vw, 3rem);
+    --font-3xl: clamp(2.5rem, 8vw, 4rem);
+    --font-4xl: clamp(3rem, 10vw, 5rem);
+    
+    /* Responsive border radius */
+    --radius-sm: clamp(4px, 1vw, 8px);
+    --radius-md: clamp(8px, 2vw, 12px);
+    --radius-lg: clamp(12px, 3vw, 20px);
 }
 
 /* Reset and base styles */
@@ -37,7 +45,7 @@
 
 body, html {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     background: var(--primary-bg);
     color: var(--text-primary);
     text-align: center;
@@ -54,87 +62,64 @@ body, html {
     text-rendering: optimizeLegibility;
 }
 
-/* Special styling for scrollable pages */
-body.scrollable-page {
-    overflow: auto;
-    height: auto;
-    min-height: 100vh;
-    justify-content: flex-start;
+/* Responsive container system */
+.container {
+    width: 100%;
+    max-width: min(90vw, 1200px);
+    margin: 0 auto;
+    padding: var(--spacing-md);
 }
 
-/* ===========================================
-   DESKTOP-FIRST DESIGN (769px+) - 16:9 RATIO
-   =========================================== */
-
-/* Desktop Menu Container - 16:9 aspect ratio */
+/* Menu container - fully responsive */
 .menu-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    max-width: calc(100vh * 16 / 9); /* 16:9 aspect ratio */
-    margin: 0 auto;
-    padding: var(--spacing-xl);
-    background: var(--primary-bg);
-    overflow: hidden;
-    position: relative;
-}
-
-/* Ensure desktop content fits within 16:9 viewport */
-@media (min-width: 769px) {
-    .menu-container {
-        /* If screen is wider than 16:9, limit width */
-        max-width: min(100vw, calc(100vh * 16 / 9));
-        /* If screen is taller than 16:9, limit height */
-        max-height: min(100vh, calc(100vw * 9 / 16));
-    }
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 100vw;
 }
 
 .menu-container h1 {
-    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-3xl);
-    font-weight: 100;
-    margin-bottom: var(--spacing-xl);
-    color: var(--text-primary);
-    letter-spacing: 0.02em;
+    font-weight: 300;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px var(--shadow-dark);
+    letter-spacing: clamp(-0.02em, 0.1vw, 0.02em);
 }
 
-/* Desktop Button Container */
-.button-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
-    width: 100%;
-    max-width: 600px;
-}
-
-/* Desktop Buttons */
+/* Responsive button system */
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     background: var(--secondary-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--text-primary);
     font-size: var(--font-lg);
     padding: var(--spacing-md) var(--spacing-lg);
-    border: 0.5px solid var(--border-color);
-    border-radius: 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    margin: 0;
+    margin: var(--spacing-sm) 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
-    display: block;
-    width: 100%;
-    min-height: 80px;
+    display: inline-block;
+    min-width: clamp(200px, 50vw, 400px);
+    max-width: 90vw;
     position: relative;
     overflow: hidden;
-    box-shadow: none;
-    text-align: center;
-    line-height: 1.4;
-    word-wrap: break-word;
-    hyphens: auto;
+    box-shadow: 
+        0 4px 6px var(--shadow-dark),
+        0 1px 3px var(--shadow-dark),
+        inset 0 1px 0 var(--shadow-light);
 }
 
 .poem-button::before, .button::before {
@@ -144,7 +129,7 @@ body.scrollable-page {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.5s ease;
 }
 
@@ -155,194 +140,180 @@ body.scrollable-page {
 .poem-button:hover, .button:hover {
     background: var(--hover-bg);
     border-color: var(--accent-color);
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px var(--shadow-dark),
+        0 4px 10px var(--shadow-dark),
+        inset 0 1px 0 var(--shadow-light);
 }
 
 .poem-button:active, .button:active {
-    transform: none;
-    box-shadow: none;
-    background: var(--hover-bg);
+    transform: translateY(0);
+    box-shadow: 
+        0 2px 4px var(--shadow-dark),
+        inset 0 1px 0 var(--shadow-light);
 }
 
-/* Desktop Slider Container - 16:9 aspect ratio */
+/* Slider container - responsive */
 .slider-container {
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    max-width: calc(100vh * 16 / 9); /* 16:9 aspect ratio */
-    margin: 0 auto;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
     filter: blur(0px);
     position: relative;
-    background: var(--primary-bg);
-}
-
-/* Ensure desktop slider fits within 16:9 viewport */
-@media (min-width: 769px) {
-    .slider-container {
-        max-width: min(100vw, calc(100vh * 16 / 9));
-        max-height: min(100vh, calc(100vw * 9 / 16));
-    }
 }
 
 .slide {
     flex: 0 0 100vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     position: relative;
-    background: var(--primary-bg);
 }
 
 .slide.active {
     opacity: 1;
 }
 
-/* Desktop Poem Styling */
+/* Responsive poem styling */
 .poem {
-    font-family: 'Montserrat', sans-serif;
     background: var(--secondary-bg);
-    padding: var(--spacing-xxl);
-    border: none;
-    border-radius: 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
     font-size: var(--font-lg);
     line-height: 1.8;
+    max-width: min(90vw, 800px);
     width: 100%;
-    max-width: 800px;
-    box-shadow: none;
+    box-shadow: 
+        0 8px 32px var(--shadow-dark),
+        0 4px 16px var(--shadow-dark),
+        inset 0 1px 0 var(--shadow-light);
     position: relative;
     overflow: hidden;
 }
 
+.poem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
+}
+
 .poem p {
-    font-family: 'Montserrat', sans-serif;
     position: relative;
     z-index: 1;
     margin: 0;
-    text-shadow: none;
-    color: var(--text-primary);
-    font-weight: 100;
-    word-wrap: break-word;
-    hyphens: auto;
+    text-shadow: 0 1px 2px var(--shadow-dark);
 }
 
-/* Desktop Return Button */
+/* Blur effect */
+.blurring {
+    filter: blur(10px);
+}
+
+/* Return button specific styling */
 .return {
-    background: var(--primary-bg);
-    color: var(--text-primary);
-    font-weight: 100;
-    border: 0.5px solid var(--border-color);
-    border-radius: 0;
-    box-shadow: none;
+    background: var(--accent-color);
+    color: #000000;
+    font-weight: 500;
+    border: 2px solid var(--accent-color);
+    box-shadow: 
+        0 4px 15px rgba(255, 255, 255, 0.2),
+        0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
 .return:hover {
-    background: var(--hover-bg);
-    transform: none;
-    box-shadow: none;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(255, 255, 255, 0.3),
+        0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* Desktop Credit Button */
+/* Credit styling - responsive */
 .credit, .credit-button {
     position: fixed;
     bottom: var(--spacing-md);
     left: var(--spacing-md);
     font-size: var(--font-sm);
-    z-index: 9999;
+    z-index: 1000;
     transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    pointer-events: auto;
 }
 
 .credit {
     color: var(--text-secondary);
     opacity: 0.8;
-    font-weight: 100;
 }
 
 .credit-button {
     color: var(--text-primary);
     background: var(--secondary-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: var(--spacing-sm) var(--spacing-md);
-    border: 0.5px solid var(--border-color);
-    border-radius: 0;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    font-weight: 100;
-    box-shadow: none;
-    white-space: nowrap;
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid var(--border-color);
+    font-weight: 400;
+    box-shadow: 0 2px 8px var(--shadow-dark);
 }
 
 .credit-button:hover {
     background: var(--hover-bg);
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-dark);
 }
 
-/* Desktop Scrollable Container - 16:9 aspect ratio */
-.scrollable-container {
+/* Reflection page specific styles */
+.reflection-image {
     width: 100%;
-    max-width: min(1000px, calc(100vh * 16 / 9));
-    margin: 0 auto;
-    padding: var(--spacing-xl);
-    background: var(--primary-bg);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 100px;
-}
-
-/* Desktop Reflection Page */
-.reflection-image, .reflection-image-full {
-    width: 100%;
-    max-width: 600px;
+    max-width: min(90vw, 600px);
     height: auto;
     display: block;
     margin: 0 auto var(--spacing-xl) auto;
-    border: 0.5px solid var(--border-color);
-    border-radius: 0;
-    box-shadow: none;
+    border: clamp(4px, 1vw, 8px) solid var(--accent-color);
+    border-radius: var(--radius-md);
+    box-shadow: 
+        0 8px 32px var(--shadow-dark),
+        0 4px 16px var(--shadow-dark);
     transition: transform 0.3s ease;
-    object-fit: contain;
 }
 
-.reflection-image:hover, .reflection-image-full:hover {
-    transform: none;
+.reflection-image:hover {
+    transform: scale(1.02);
 }
 
 .text-box {
-    font-family: 'Montserrat', sans-serif;
     font-size: var(--font-base);
     line-height: 1.8;
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     background: var(--secondary-bg);
-    border: 0.5px solid var(--border-color);
-    border-radius: 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
     margin: var(--spacing-lg) 0;
-    box-shadow: none;
-    width: 100%;
-    max-width: 800px;
+    box-shadow: 
+        0 8px 32px var(--shadow-dark),
+        inset 0 1px 0 var(--shadow-light);
 }
 
 .text-box p {
-    font-family: 'Montserrat', sans-serif;
     margin-bottom: var(--spacing-md);
     text-align: left;
-    color: var(--text-primary);
-    font-weight: 100;
-    word-wrap: break-word;
-    hyphens: auto;
 }
 
 .text-box p:last-child {
@@ -352,26 +323,7 @@ body.scrollable-page {
 .button-container {
     text-align: center;
     margin-top: var(--spacing-xl);
-    padding: var(--spacing-lg);
-    width: 100%;
-}
-
-.container {
-    width: 100%;
-    max-width: min(1000px, calc(100vh * 16 / 9));
-    margin: 0 auto;
-    padding: var(--spacing-xl);
-    background: var(--primary-bg);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Blur effect */
-.blurring {
-    filter: blur(10px);
+    padding: var(--spacing-md);
 }
 
 /* Fade-in animations */
@@ -391,356 +343,126 @@ body.scrollable-page {
     }
 }
 
-/* ===========================================
-   MOBILE RESPONSIVE DESIGN (768px and below) - 20:9 RATIO
-   =========================================== */
+/* Responsive breakpoints */
 
-@media (max-width: 768px) {
+/* Small phones (320px - 480px) */
+@media (max-width: 480px) {
     :root {
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 0.75rem;
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
         --spacing-md: 1rem;
         --spacing-lg: 1.5rem;
         --spacing-xl: 2rem;
         --spacing-xxl: 2.5rem;
-        
-        --font-xs: 0.875rem;
-        --font-sm: 1rem;
-        --font-base: 1.125rem;
-        --font-lg: 1.375rem;
-        --font-xl: 1.75rem;
-        --font-2xl: 2.25rem;
-        --font-3xl: 2.75rem;
-        --font-4xl: 3.5rem;
     }
-
-    /* Mobile Menu Container - 20:9 aspect ratio (portrait) */
+    
     .menu-container {
-        height: 100vh;
-        width: 100vw;
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        margin: 0 auto;
-        padding: var(--spacing-lg);
-        padding-bottom: 100px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Mobile Slider Container - 20:9 aspect ratio (portrait) */
-    .slider-container {
-        width: 100vw;
-        height: 100vh;
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        margin: 0 auto;
-    }
-
-    /* Mobile Scrollable Container - 20:9 aspect ratio (portrait) */
-    .scrollable-container {
-        width: 100vw;
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        margin: 0 auto;
-        padding: var(--spacing-lg);
-        padding-bottom: 100px;
-    }
-
-    .container {
-        width: 100vw;
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        margin: 0 auto;
-        padding: var(--spacing-lg);
-    }
-
-    .menu-container h1 {
-        font-size: var(--font-3xl);
-        margin: var(--spacing-xl) 0 var(--spacing-lg) 0;
-        flex-shrink: 0;
-    }
-
-    /* Mobile Button Container */
-    .button-group {
-        width: 100%;
-        max-width: calc(100vw - 3rem);
-        gap: var(--spacing-md);
-        flex: 1;
-        justify-content: flex-start;
-    }
-
-    /* Mobile Buttons */
-    .poem-button, .button {
-        font-size: var(--font-lg);
-        padding: var(--spacing-lg);
-        min-height: 70px;
-    }
-
-    /* Mobile Slider */
-    .slide {
-        padding: var(--spacing-lg);
-        flex: 0 0 100vh;
-    }
-
-    /* Mobile Poem */
-    .poem {
-        padding: var(--spacing-xl);
-        max-width: calc(100vw - 3rem);
-        font-size: var(--font-base);
-    }
-
-    /* Mobile Credit Button */
-    .credit, .credit-button {
-        bottom: var(--spacing-lg);
-        left: var(--spacing-lg);
-        font-size: var(--font-sm);
-    }
-
-    .credit-button {
-        min-height: 44px;
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-
-    /* Mobile Reflection Page */
-    .reflection-image, .reflection-image-full {
-        max-width: calc(100vw - 3rem);
-    }
-
-    .text-box {
-        max-width: calc(100vw - 3rem);
-        padding: var(--spacing-lg);
-        font-size: var(--font-base);
-    }
-
-    .button-container {
         padding: var(--spacing-md);
-    }
-
-    /* Mobile Scrollbar */
-    .menu-container::-webkit-scrollbar {
-        width: 3px;
-    }
-
-    .menu-container::-webkit-scrollbar-track {
-        background: var(--primary-bg);
-    }
-
-    .menu-container::-webkit-scrollbar-thumb {
-        background: var(--border-color);
-        border-radius: 0;
-    }
-
-    .menu-container::-webkit-scrollbar-thumb:hover {
-        background: var(--text-primary);
-    }
-}
-
-/* Small phones (up to 480px) - Maintain 20:9 ratio */
-@media (max-width: 480px) {
-    :root {
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 0.75rem;
-        --spacing-md: 1rem;
-        --spacing-lg: 1.25rem;
-        --spacing-xl: 1.75rem;
-        --spacing-xxl: 2rem;
-        
-        --font-xs: 0.875rem;
-        --font-sm: 1rem;
-        --font-base: 1.125rem;
-        --font-lg: 1.25rem;
-        --font-xl: 1.5rem;
-        --font-2xl: 2rem;
-        --font-3xl: 2.5rem;
-    }
-
-    .menu-container {
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        padding: var(--spacing-md);
-        padding-bottom: 90px;
-    }
-
-    .slider-container {
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-    }
-
-    .scrollable-container {
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        padding: var(--spacing-md);
-        padding-bottom: 90px;
-    }
-
-    .container {
-        /* For portrait mobile: height should be 20/9 times the width */
-        max-height: calc(100vw * 20 / 9);
-        /* For very tall screens: width should be 9/20 times the height */
-        max-width: calc(100vh * 9 / 20);
-        padding: var(--spacing-md);
-    }
-
-    .menu-container h1 {
-        font-size: var(--font-3xl);
-        margin: var(--spacing-lg) 0;
-    }
-
-    .button-group {
-        max-width: calc(100vw - 2rem);
         gap: var(--spacing-sm);
     }
-
-    .poem-button, .button {
-        font-size: var(--font-base);
-        padding: var(--spacing-md);
-        min-height: 60px;
-    }
-
+    
     .poem {
         padding: var(--spacing-lg);
-        max-width: calc(100vw - 2rem);
-        font-size: var(--font-sm);
+        margin: var(--spacing-sm);
     }
-
-    .credit-button {
-        bottom: var(--spacing-md);
-        left: var(--spacing-md);
-        font-size: var(--font-xs);
-        min-height: 40px;
-    }
-
-    .reflection-image, .reflection-image-full {
-        max-width: calc(100vw - 2rem);
-    }
-
-    .text-box {
-        max-width: calc(100vw - 2rem);
+    
+    .slide {
         padding: var(--spacing-md);
-        font-size: var(--font-sm);
+    }
+    
+    .poem-button, .button {
+        min-width: 280px;
+        padding: var(--spacing-md) var(--spacing-lg);
     }
 }
 
-/* Landscape orientation adjustments for mobile */
-@media (max-width: 768px) and (orientation: landscape) and (max-height: 600px) {
-    /* In landscape, we flip the ratio - width should be 20/9 times the height */
-    .menu-container {
-        max-width: calc(100vh * 20 / 9);
-        max-height: calc(100vw * 9 / 20);
-        padding: var(--spacing-sm);
-        padding-bottom: 80px;
+/* Large phones (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .poem {
+        max-width: 85vw;
+        padding: var(--spacing-xl);
     }
-
-    .slider-container {
-        max-width: calc(100vh * 20 / 9);
-        max-height: calc(100vw * 9 / 20);
+    
+    .poem-button, .button {
+        min-width: 350px;
     }
+}
 
-    .scrollable-container {
-        max-width: calc(100vh * 20 / 9);
-        max-height: calc(100vw * 9 / 20);
+/* Tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .poem {
+        max-width: 80vw;
+        padding: var(--spacing-xxl);
     }
-
-    .container {
-        max-width: calc(100vh * 20 / 9);
-        max-height: calc(100vw * 9 / 20);
+    
+    .poem-button, .button {
+        min-width: 400px;
     }
     
     .menu-container h1 {
-        margin: var(--spacing-md) 0;
-        font-size: var(--font-2xl);
+        margin-bottom: var(--spacing-xl);
+    }
+}
+
+/* Desktop (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .poem {
+        max-width: 70vw;
     }
     
-    .button-group {
+    .poem-button, .button {
+        min-width: 450px;
+    }
+}
+
+/* Large desktop (1441px+) */
+@media (min-width: 1441px) {
+    :root {
+        --font-xs: 0.875rem;
+        --font-sm: 1rem;
+        --font-base: 1.125rem;
+        --font-lg: 1.5rem;
+        --font-xl: 2rem;
+        --font-2xl: 3rem;
+        --font-3xl: 4rem;
+        --font-4xl: 5rem;
+    }
+    
+    .poem {
+        max-width: 60vw;
+        padding: 4rem;
+    }
+    
+    .poem-button, .button {
+        min-width: 500px;
+        padding: 1.5rem 2rem;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .menu-container {
+        padding: var(--spacing-sm);
         gap: var(--spacing-xs);
     }
     
+    .menu-container h1 {
+        margin-bottom: var(--spacing-md);
+    }
+    
     .poem {
-        padding: var(--spacing-md);
+        padding: var(--spacing-lg);
         max-height: 70vh;
         overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+    }
+    
+    .slide {
+        padding: var(--spacing-sm);
     }
     
     .poem-button, .button {
         padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-sm);
-        min-height: 50px;
-    }
-    
-    .credit-button {
-        bottom: var(--spacing-sm);
-        left: var(--spacing-sm);
-        font-size: var(--font-xs);
-        min-height: 36px;
-    }
-}
-
-/* Large desktop (1441px+) - Maintain 16:9 ratio */
-@media (min-width: 1441px) {
-    :root {
-        --font-base: 1.25rem;
-        --font-lg: 1.75rem;
-        --font-xl: 2.25rem;
-        --font-2xl: 3.5rem;
-        --font-3xl: 4.5rem;
-        --font-4xl: 6rem;
-    }
-
-    .menu-container {
-        max-width: calc(100vh * 16 / 9); /* Maintain 16:9 aspect ratio */
-    }
-
-    .slider-container {
-        max-width: calc(100vh * 16 / 9); /* Maintain 16:9 aspect ratio */
-    }
-
-    .scrollable-container {
-        max-width: min(1200px, calc(100vh * 16 / 9)); /* Maintain 16:9 aspect ratio */
-    }
-
-    .container {
-        max-width: min(1200px, calc(100vh * 16 / 9)); /* Maintain 16:9 aspect ratio */
-    }
-
-    .poem {
-        max-width: 1000px;
-        padding: 4rem;
-    }
-
-    .poem-button, .button {
-        font-size: var(--font-xl);
-        padding: 2rem 2.5rem;
-        min-height: 100px;
-    }
-
-    .button-group {
-        max-width: 700px;
-    }
-
-    .text-box {
-        max-width: 1000px;
-        font-size: var(--font-lg);
-    }
-
-    .reflection-image, .reflection-image-full {
-        max-width: 800px;
+        margin: var(--spacing-xs) 0;
     }
 }
 
@@ -769,55 +491,17 @@ body.scrollable-page {
     }
 }
 
-/* Focus styles for accessibility */
-.poem-button:focus, .button:focus, .credit-button:focus {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
-
-@media (max-width: 768px) {
-    .poem-button:focus, .button:focus, .credit-button:focus {
-        outline: 0.5px solid var(--accent-color);
-        outline-offset: 2px;
-    }
-}
-
-/* Touch-specific optimizations */
-@media (hover: none) and (pointer: coarse) {
-    .poem-button, .button {
-        min-height: 60px;
-    }
-    
-    .credit-button {
-        min-height: 44px;
-        min-width: 80px;
-    }
-    
-    /* Remove hover effects on touch devices */
-    .poem-button:hover, .button:hover, .credit-button:hover {
-        background: var(--secondary-bg);
-        transform: none;
-    }
-    
-    /* Add active states for touch feedback */
-    .poem-button:active, .button:active {
-        background: var(--hover-bg);
-    }
-}
-
-/* Safe area adjustments for devices with notches */
-@supports (padding: max(0px)) {
-    @media (max-width: 768px) {
-        .menu-container, .scrollable-container {
-            padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
-            padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
-            padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
-        }
-        
-        .credit-button {
-            bottom: max(var(--spacing-lg), env(safe-area-inset-bottom) + var(--spacing-md));
-            left: max(var(--spacing-lg), env(safe-area-inset-left) + var(--spacing-md));
-        }
+/* Dark mode support (if system preference changes) */
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --border-color: rgba(0, 0, 0, 0.1);
+        --secondary-bg: rgba(255, 255, 255, 0.8);
+        --hover-bg: rgba(0, 0, 0, 0.05);
+        --shadow-light: rgba(255, 255, 255, 0.8);
+        --shadow-dark: rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -834,19 +518,26 @@ body.scrollable-page {
     
     .poem {
         background: white;
-        border: none;
+        border: 1px solid black;
         box-shadow: none;
         page-break-inside: avoid;
     }
 }
 
-/* Loading and error states */
+/* Focus styles for accessibility */
+.poem-button:focus, .button:focus, .credit-button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Loading states */
 .loading {
     opacity: 0.6;
     pointer-events: none;
 }
 
+/* Error states */
 .error {
-    border-color: #ffffff;
-    background: var(--primary-bg);
+    border-color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
 }
