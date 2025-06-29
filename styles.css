@@ -21,6 +21,170 @@ body, html {
     justify-content: center;
 }
 
+/* Parallax Menu Styles */
+.parallax-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    width: 100%;
+}
+
+.parallax-menu-container h1 {
+    font-size: 3rem;
+    font-weight: 100;
+    margin-bottom: 60px;
+    color: #ffffff;
+}
+
+.parallax-wrapper {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+}
+
+.parallax-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+}
+
+.poem-card {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0.3;
+    transform: scale(0.8) rotateY(45deg);
+    transition: all 0.8s ease;
+    cursor: pointer;
+}
+
+.poem-card.active {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+}
+
+.poem-card.prev {
+    transform: scale(0.7) rotateY(-45deg) translateX(-50px);
+    opacity: 0.2;
+}
+
+.poem-card.next {
+    transform: scale(0.7) rotateY(45deg) translateX(50px);
+    opacity: 0.2;
+}
+
+.poem-card h3 {
+    font-size: 2rem;
+    font-weight: 100;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.poem-card p {
+    font-size: 1rem;
+    font-weight: 100;
+    line-height: 1.6;
+    color: #cccccc;
+    max-width: 300px;
+}
+
+.navigation-arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px 0 20px 0;
+    position: relative;
+}
+
+.arrow-btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 100;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.arrow-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.arrow-btn:disabled:hover {
+    background: transparent;
+    color: #ffffff;
+}
+
+.card-indicators {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #ffffff;
+}
+
+.read-button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.read-button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Original poem page styles */
 .menu-container {
     display: flex;
     flex-direction: column;
@@ -190,6 +354,45 @@ body, html {
 }
 
 @media (max-width: 768px) {
+    .parallax-menu-container h1 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .parallax-wrapper {
+        height: 300px;
+        max-width: 90vw;
+    }
+    
+    .poem-card {
+        padding: 30px 20px;
+    }
+    
+    .poem-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .poem-card p {
+        font-size: 0.9rem;
+    }
+    
+    .arrow-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .navigation-arrows {
+        max-width: 100%;
+        margin: 30px 0 15px 0;
+    }
+    
+    .read-button {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+    
     .menu-container h1 {
         font-size: 2rem;
     }

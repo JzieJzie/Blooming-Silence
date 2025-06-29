@@ -1,15 +1,170 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Parallax menu functionality
+    let currentCardIndex = 0;
+    const cards = document.querySelectorAll(".poem-card");
+    const slider = document.getElementById("parallaxSlider");
+    const leftArrow = document.getElementById("leftArrow");
+    const rightArrow = document.getElementById("rightArrow");
+    const readButton = document.getElementById("readButton");
+    const indicators = document.querySelectorAll(".indicator");
+    let isTransitioning = false;
+
+    function updateParallaxCards(index) {
+        if (isTransitioning || index < 0 || index >= cards.length) return;
+        
+        isTransitioning = true;
+        
+        cards.forEach((card, i) => {
+            card.classList.remove("active", "prev", "next");
+            
+            if (i === index) {
+                card.classList.add("active");
+            } else if (i === index - 1) {
+                card.classList.add("prev");
+            } else if (i === index + 1) {
+                card.classList.add("next");
+            }
+        });
+
+        // Update slider position
+        if (slider) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        // Update indicators
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle("active", i === index);
+        });
+
+        // Update arrow states
+        if (leftArrow) leftArrow.disabled = index === 0;
+        if (rightArrow) rightArrow.disabled = index === cards.length - 1;
+
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 800);
+    }
+
+    function goToCard(direction) {
+        if (direction === 'next' && currentCardIndex < cards.length - 1) {
+            currentCardIndex++;
+        } else if (direction === 'prev' && currentCardIndex > 0) {
+            currentCardIndex--;
+        }
+        updateParallaxCards(currentCardIndex);
+    }
+
+    function goToPoem(url) {
+        document.body.style.transition = "opacity 500ms ease";
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+            window.location.href = url;
+        }, 500);
+    }
+
+    // Initialize parallax menu if it exists
+    if (cards.length > 0 && slider) {
+        // Arrow navigation
+        if (leftArrow) {
+            leftArrow.addEventListener("click", () => goToCard('prev'));
+        }
+        if (rightArrow) {
+            rightArrow.addEventListener("click", () => goToCard('next'));
+        }
+
+        // Indicator navigation
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => {
+                currentCardIndex = index;
+                updateParallaxCards(currentCardIndex);
+            });
+        });
+
+        // Card click navigation
+        cards.forEach((card, index) => {
+            card.addEventListener("click", () => {
+                if (index !== currentCardIndex) {
+                    currentCardIndex = index;
+                    updateParallaxCards(currentCardIndex);
+                }
+            });
+        });
+
+        // Read button functionality
+        if (readButton) {
+            readButton.addEventListener("click", () => {
+                const activeCard = cards[currentCardIndex];
+                const url = activeCard.getAttribute("data-url");
+                if (url) {
+                    goToPoem(url);
+                }
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener("keydown", (event) => {
+            if (isTransitioning) return;
+
+            switch (event.key) {
+                case "ArrowLeft":
+                    event.preventDefault();
+                    goToCard('prev');
+                    break;
+                case "ArrowRight":
+                    event.preventDefault();
+                    goToCard('next');
+                    break;
+                case "Enter":
+                case " ":
+                    event.preventDefault();
+                    const activeCard = cards[currentCardIndex];
+                    const url = activeCard.getAttribute("data-url");
+                    if (url) {
+                        goToPoem(url);
+                    }
+                    break;
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener("touchstart", (event) => {
+            touchStartX = event.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slider.addEventListener("touchend", (event) => {
+            if (isTransitioning) return;
+            
+            touchEndX = event.changedTouches[0].screenX;
+            const touchDifference = touchStartX - touchEndX;
+
+            if (Math.abs(touchDifference) > 50) {
+                if (touchDifference > 0) {
+                    goToCard('next');
+                } else {
+                    goToCard('prev');
+                }
+            }
+        }, { passive: true });
+
+        // Initialize first card
+        updateParallaxCards(0);
+    }
+
+    // Original poem page functionality
     let currentIndex = 0;
     const slides = document.querySelectorAll(".slide");
-    const slider = document.getElementById("slider");
-    let isTransitioning = false;
+    const slideSlider = document.getElementById("slider");
+    let isSlideTransitioning = false;
     let touchStartY = 0;
     let touchEndY = 0;
 
     function updateSlide(index) {
-        if (isTransitioning || index < 0 || index >= slides.length) return;
+        if (isSlideTransitioning || index < 0 || index >= slides.length) return;
         
-        isTransitioning = true;
+        isSlideTransitioning = true;
         
         slides.forEach((slide, i) => {
             slide.classList.remove("active");
@@ -18,12 +173,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        if (slider) {
-            slider.style.transform = `translateY(-${index * 100}vh)`;
+        if (slideSlider) {
+            slideSlider.style.transform = `translateY(-${index * 100}vh)`;
         }
         
         setTimeout(() => {
-            isTransitioning = false;
+            isSlideTransitioning = false;
         }, 800);
     }
 
@@ -44,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleTouchEnd(event) {
-        if (isTransitioning) return;
+        if (isSlideTransitioning) return;
         
         touchEndY = event.changedTouches[0].screenY;
         const touchDifference = touchStartY - touchEndY;
@@ -61,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleKeyDown(event) {
-        if (isTransitioning) return;
+        if (isSlideTransitioning) return;
 
         switch (event.key) {
             case "ArrowDown":
@@ -89,12 +244,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (!isTransitioning && currentIndex < slides.length - 1) {
+        if (!isSlideTransitioning && currentIndex < slides.length - 1) {
             currentIndex++;
             updateSlide(currentIndex);
         }
     }
 
+    // Only add slide functionality if slides exist (poem pages)
     if (slides.length > 0) {
         document.addEventListener("click", handleClick);
         document.addEventListener("wheel", handleScroll, { passive: false });
@@ -103,6 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener("keydown", handleKeyDown);
     }
 
+    // Return to index functionality
     document.querySelectorAll('a[href="index.html"]').forEach(link => {
         link.addEventListener("click", (event) => {
             event.preventDefault();
@@ -115,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Global function for backward compatibility
 function goToPoem(url) {
     document.body.style.transition = "opacity 500ms ease";
     document.body.style.opacity = "0";
