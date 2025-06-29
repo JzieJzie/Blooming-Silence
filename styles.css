@@ -63,10 +63,10 @@ body.scrollable-page {
 }
 
 /* ===========================================
-   DESKTOP-FIRST DESIGN (769px+)
+   DESKTOP-FIRST DESIGN (769px+) - 16:9 RATIO
    =========================================== */
 
-/* Desktop Menu Container */
+/* Desktop Menu Container - 16:9 aspect ratio */
 .menu-container {
     display: flex;
     flex-direction: column;
@@ -74,9 +74,22 @@ body.scrollable-page {
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    max-width: calc(100vh * 16 / 9); /* 16:9 aspect ratio */
+    margin: 0 auto;
     padding: var(--spacing-xl);
     background: var(--primary-bg);
     overflow: hidden;
+    position: relative;
+}
+
+/* Ensure desktop content fits within 16:9 viewport */
+@media (min-width: 769px) {
+    .menu-container {
+        /* If screen is wider than 16:9, limit width */
+        max-width: min(100vw, calc(100vh * 16 / 9));
+        /* If screen is taller than 16:9, limit height */
+        max-height: min(100vh, calc(100vw * 9 / 16));
+    }
 }
 
 .menu-container h1 {
@@ -152,21 +165,31 @@ body.scrollable-page {
     background: var(--hover-bg);
 }
 
-/* Desktop Slider Container */
+/* Desktop Slider Container - 16:9 aspect ratio */
 .slider-container {
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    max-width: calc(100vh * 16 / 9); /* 16:9 aspect ratio */
+    margin: 0 auto;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
     filter: blur(0px);
     position: relative;
     background: var(--primary-bg);
 }
 
+/* Ensure desktop slider fits within 16:9 viewport */
+@media (min-width: 769px) {
+    .slider-container {
+        max-width: min(100vw, calc(100vh * 16 / 9));
+        max-height: min(100vh, calc(100vw * 9 / 16));
+    }
+}
+
 .slide {
     flex: 0 0 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -265,10 +288,10 @@ body.scrollable-page {
     box-shadow: none;
 }
 
-/* Desktop Scrollable Container */
+/* Desktop Scrollable Container - 16:9 aspect ratio */
 .scrollable-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: min(1000px, calc(100vh * 16 / 9));
     margin: 0 auto;
     padding: var(--spacing-xl);
     background: var(--primary-bg);
@@ -335,7 +358,7 @@ body.scrollable-page {
 
 .container {
     width: 100%;
-    max-width: 1000px;
+    max-width: min(1000px, calc(100vh * 16 / 9));
     margin: 0 auto;
     padding: var(--spacing-xl);
     background: var(--primary-bg);
@@ -369,7 +392,7 @@ body.scrollable-page {
 }
 
 /* ===========================================
-   MOBILE RESPONSIVE DESIGN (768px and below)
+   MOBILE RESPONSIVE DESIGN (768px and below) - 20:9 RATIO
    =========================================== */
 
 @media (max-width: 768px) {
@@ -391,15 +414,44 @@ body.scrollable-page {
         --font-4xl: 3.5rem;
     }
 
-    /* Mobile Menu Container */
+    /* Mobile Menu Container - 20:9 aspect ratio */
     .menu-container {
         height: 100vh;
+        width: 100vw;
+        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
+        max-height: calc(100vw * 9 / 20); /* Inverse for landscape */
+        margin: 0 auto;
         padding: var(--spacing-lg);
         padding-bottom: 100px;
         overflow-y: auto;
         overflow-x: hidden;
         justify-content: flex-start;
         -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile Slider Container - 20:9 aspect ratio */
+    .slider-container {
+        width: 100vw;
+        height: 100vh;
+        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
+        max-height: calc(100vw * 9 / 20); /* Inverse for landscape */
+        margin: 0 auto;
+    }
+
+    /* Mobile Scrollable Container - 20:9 aspect ratio */
+    .scrollable-container {
+        width: 100vw;
+        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+        padding-bottom: 100px;
+    }
+
+    .container {
+        width: 100vw;
+        max-width: calc(100vh * 20 / 9); /* 20:9 aspect ratio */
+        margin: 0 auto;
+        padding: var(--spacing-lg);
     }
 
     .menu-container h1 {
@@ -410,6 +462,7 @@ body.scrollable-page {
 
     /* Mobile Button Container */
     .button-group {
+        width: 100%;
         max-width: calc(100vw - 3rem);
         gap: var(--spacing-md);
         flex: 1;
@@ -426,6 +479,7 @@ body.scrollable-page {
     /* Mobile Slider */
     .slide {
         padding: var(--spacing-lg);
+        flex: 0 0 100vh;
     }
 
     /* Mobile Poem */
@@ -447,13 +501,6 @@ body.scrollable-page {
         padding: var(--spacing-sm) var(--spacing-md);
     }
 
-    /* Mobile Scrollable Container */
-    .scrollable-container {
-        padding: var(--spacing-lg);
-        padding-bottom: 100px;
-        max-width: calc(100vw - 3rem);
-    }
-
     /* Mobile Reflection Page */
     .reflection-image, .reflection-image-full {
         max-width: calc(100vw - 3rem);
@@ -467,11 +514,6 @@ body.scrollable-page {
 
     .button-container {
         padding: var(--spacing-md);
-    }
-
-    .container {
-        max-width: calc(100vw - 3rem);
-        padding: var(--spacing-lg);
     }
 
     /* Mobile Scrollbar */
@@ -493,7 +535,7 @@ body.scrollable-page {
     }
 }
 
-/* Small phones (up to 480px) */
+/* Small phones (up to 480px) - Maintain 20:9 ratio */
 @media (max-width: 480px) {
     :root {
         --spacing-xs: 0.5rem;
@@ -513,8 +555,24 @@ body.scrollable-page {
     }
 
     .menu-container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
         padding: var(--spacing-md);
         padding-bottom: 90px;
+    }
+
+    .slider-container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+    }
+
+    .scrollable-container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        padding: var(--spacing-md);
+        padding-bottom: 90px;
+    }
+
+    .container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+        padding: var(--spacing-md);
     }
 
     .menu-container h1 {
@@ -546,12 +604,6 @@ body.scrollable-page {
         min-height: 40px;
     }
 
-    .scrollable-container {
-        padding: var(--spacing-md);
-        padding-bottom: 90px;
-        max-width: calc(100vw - 2rem);
-    }
-
     .reflection-image, .reflection-image-full {
         max-width: calc(100vw - 2rem);
     }
@@ -561,18 +613,26 @@ body.scrollable-page {
         padding: var(--spacing-md);
         font-size: var(--font-sm);
     }
-
-    .container {
-        max-width: calc(100vw - 2rem);
-        padding: var(--spacing-md);
-    }
 }
 
-/* Landscape orientation adjustments for mobile */
+/* Landscape orientation adjustments for mobile - Maintain 20:9 ratio */
 @media (max-width: 768px) and (orientation: landscape) and (max-height: 600px) {
     .menu-container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
         padding: var(--spacing-sm);
         padding-bottom: 80px;
+    }
+
+    .slider-container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+    }
+
+    .scrollable-container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
+    }
+
+    .container {
+        max-width: calc(100vh * 20 / 9); /* Maintain 20:9 aspect ratio */
     }
     
     .menu-container h1 {
@@ -605,7 +665,7 @@ body.scrollable-page {
     }
 }
 
-/* Large desktop (1441px+) */
+/* Large desktop (1441px+) - Maintain 16:9 ratio */
 @media (min-width: 1441px) {
     :root {
         --font-base: 1.25rem;
@@ -614,6 +674,22 @@ body.scrollable-page {
         --font-2xl: 3.5rem;
         --font-3xl: 4.5rem;
         --font-4xl: 6rem;
+    }
+
+    .menu-container {
+        max-width: calc(100vh * 16 / 9); /* Maintain 16:9 aspect ratio */
+    }
+
+    .slider-container {
+        max-width: calc(100vh * 16 / 9); /* Maintain 16:9 aspect ratio */
+    }
+
+    .scrollable-container {
+        max-width: min(1200px, calc(100vh * 16 / 9)); /* Maintain 16:9 aspect ratio */
+    }
+
+    .container {
+        max-width: min(1200px, calc(100vh * 16 / 9)); /* Maintain 16:9 aspect ratio */
     }
 
     .poem {
