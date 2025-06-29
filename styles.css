@@ -45,15 +45,18 @@ body, html {
     height: 400px;
     overflow: hidden;
     position: relative;
-    perspective: 1000px;
 }
 
 .parallax-slider {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s ease;
-    transform-style: preserve-3d;
+    transition: transform 0.8s ease, filter 0.3s ease;
+    will-change: transform, filter;
+}
+
+.parallax-slider.blurring {
+    filter: blur(10px);
 }
 
 .poem-card {
@@ -61,33 +64,15 @@ body, html {
     width: 100%;
     height: 100%;
     background: transparent;
-    border: 1px solid #ffffff;
-    border-radius: 0;
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    opacity: 0.3;
-    transform: scale(0.8) rotateY(45deg);
-    transition: all 0.8s ease;
-    cursor: pointer;
-}
-
-.poem-card.active {
     opacity: 1;
-    transform: scale(1) rotateY(0deg);
-}
-
-.poem-card.prev {
-    transform: scale(0.7) rotateY(-45deg) translateX(-50px);
-    opacity: 0.2;
-}
-
-.poem-card.next {
-    transform: scale(0.7) rotateY(45deg) translateX(50px);
-    opacity: 0.2;
+    transition: opacity 0.8s ease;
+    cursor: pointer;
 }
 
 .poem-card h3 {
@@ -95,6 +80,15 @@ body, html {
     font-weight: 100;
     margin-bottom: 20px;
     color: #ffffff;
+}
+
+.clickable-title {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.clickable-title:hover {
+    color: #cccccc;
 }
 
 .poem-card p {
@@ -116,8 +110,6 @@ body, html {
 
 .arrow-btn {
     background: transparent;
-    border: 1px solid #ffffff;
-    border-radius: 0;
     color: #ffffff;
     font-size: 2rem;
     font-weight: 100;
@@ -128,21 +120,11 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
 }
 
 .arrow-btn:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-.arrow-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.arrow-btn:disabled:hover {
-    background: transparent;
-    color: #ffffff;
+    color: #cccccc;
 }
 
 .card-indicators {
@@ -154,9 +136,7 @@ body, html {
 .indicator {
     width: 8px;
     height: 8px;
-    border: 1px solid #ffffff;
-    border-radius: 0;
-    background: transparent;
+    background: #333333;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -172,16 +152,14 @@ body, html {
     color: #ffffff;
     font-size: 1.2rem;
     padding: 15px 40px;
-    border: 1px solid #ffffff;
-    border-radius: 0;
     cursor: pointer;
     margin-top: 20px;
     transition: all 0.3s ease;
+    border: none;
 }
 
 .read-button:hover {
-    background: #ffffff;
-    color: #000000;
+    color: #cccccc;
 }
 
 /* Original poem page styles */
@@ -208,19 +186,17 @@ body, html {
     color: #ffffff;
     font-size: 1.2rem;
     padding: 15px 30px;
-    border: 1px solid #ffffff;
-    border-radius: 0;
     cursor: pointer;
     margin: 10px 0;
     transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
     min-width: 300px;
+    border: none;
 }
 
 .poem-button:hover, .button:hover {
-    background: #ffffff;
-    color: #000000;
+    color: #cccccc;
 }
 
 .slider-container {
@@ -228,7 +204,11 @@ body, html {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease, filter 0.3s ease;
+}
+
+.slider-container.blurring {
+    filter: blur(10px);
 }
 
 .slide {
@@ -249,8 +229,6 @@ body, html {
 .poem {
     background: transparent;
     padding: 40px;
-    border: 1px solid #ffffff;
-    border-radius: 0;
     font-size: 1.5rem;
     font-weight: 100;
     line-height: 1.8;
@@ -266,12 +244,11 @@ body, html {
     background: transparent;
     color: #ffffff;
     font-weight: 100;
-    border: 1px solid #ffffff;
+    border: none;
 }
 
 .return:hover {
-    background: #ffffff;
-    color: #000000;
+    color: #cccccc;
 }
 
 .credit, .credit-button {
@@ -287,13 +264,11 @@ body, html {
 .credit-button {
     background: transparent;
     padding: 10px 15px;
-    border: 1px solid #ffffff;
-    border-radius: 0;
+    border: none;
 }
 
 .credit-button:hover {
-    background: #ffffff;
-    color: #000000;
+    color: #cccccc;
 }
 
 .reflection-image {
@@ -302,8 +277,6 @@ body, html {
     height: auto;
     display: block;
     margin: 0 auto 40px auto;
-    border: 4px solid #ffffff;
-    border-radius: 0;
 }
 
 .text-box {
@@ -312,8 +285,6 @@ body, html {
     line-height: 1.8;
     padding: 40px;
     background: transparent;
-    border: 1px solid #ffffff;
-    border-radius: 0;
     margin: 20px 0;
 }
 

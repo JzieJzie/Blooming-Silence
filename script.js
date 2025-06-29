@@ -10,46 +10,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let isTransitioning = false;
 
     function updateParallaxCards(index) {
-        if (isTransitioning || index < 0 || index >= cards.length) return;
+        if (isTransitioning) return;
         
         isTransitioning = true;
         
-        cards.forEach((card, i) => {
-            card.classList.remove("active", "prev", "next");
-            
-            if (i === index) {
-                card.classList.add("active");
-            } else if (i === index - 1) {
-                card.classList.add("prev");
-            } else if (i === index + 1) {
-                card.classList.add("next");
-            }
-        });
-
-        // Update slider position
+        // Add blur effect
         if (slider) {
-            slider.style.transform = `translateX(-${index * 100}%)`;
+            slider.classList.add("blurring");
         }
 
-        // Update indicators
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle("active", i === index);
-        });
-
-        // Update arrow states
-        if (leftArrow) leftArrow.disabled = index === 0;
-        if (rightArrow) rightArrow.disabled = index === cards.length - 1;
-
         setTimeout(() => {
+            // Update slider position with looping
+            if (slider) {
+                slider.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle("active", i === index);
+            });
+
+            // Remove blur effect
+            if (slider) {
+                slider.classList.remove("blurring");
+            }
+
             isTransitioning = false;
-        }, 800);
+        }, 300);
     }
 
     function goToCard(direction) {
-        if (direction === 'next' && currentCardIndex < cards.length - 1) {
-            currentCardIndex++;
-        } else if (direction === 'prev' && currentCardIndex > 0) {
-            currentCardIndex--;
+        if (direction === 'next') {
+            currentCardIndex = (currentCardIndex + 1) % cards.length; // Loop to beginning
+        } else if (direction === 'prev') {
+            currentCardIndex = (currentCardIndex - 1 + cards.length) % cards.length; // Loop to end
         }
         updateParallaxCards(currentCardIndex);
     }
@@ -86,6 +80,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (index !== currentCardIndex) {
                     currentCardIndex = index;
                     updateParallaxCards(currentCardIndex);
+                }
+            });
+        });
+
+        // Title click navigation - make titles directly clickable to go to poem
+        document.querySelectorAll('.clickable-title').forEach((title, index) => {
+            title.addEventListener("click", (event) => {
+                event.stopPropagation();
+                const card = title.closest('.poem-card');
+                const url = card.getAttribute("data-url");
+                if (url) {
+                    goToPoem(url);
                 }
             });
         });
@@ -166,20 +172,26 @@ document.addEventListener("DOMContentLoaded", () => {
         
         isSlideTransitioning = true;
         
-        slides.forEach((slide, i) => {
-            slide.classList.remove("active");
-            if (i === index) {
-                slide.classList.add("active");
-            }
-        });
-
+        // Add blur effect
         if (slideSlider) {
-            slideSlider.style.transform = `translateY(-${index * 100}vh)`;
+            slideSlider.classList.add("blurring");
         }
-        
+
         setTimeout(() => {
+            slides.forEach((slide, i) => {
+                slide.classList.remove("active");
+                if (i === index) {
+                    slide.classList.add("active");
+                }
+            });
+
+            if (slideSlider) {
+                slideSlider.style.transform = `translateY(-${index * 100}vh)`;
+                slideSlider.classList.remove("blurring");
+            }
+            
             isSlideTransitioning = false;
-        }, 800);
+        }, 300);
     }
 
     function handleScroll(event) {
