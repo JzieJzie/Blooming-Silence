@@ -11,24 +11,6 @@
     --hover-bg: #111111;
     --shadow-light: rgba(255, 255, 255, 0.1);
     --shadow-dark: rgba(0, 0, 0, 0.8);
-    
-    /* Mobile-first responsive spacing system - INCREASED */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 2.5rem;
-    --spacing-xxl: 3rem;
-    
-    /* Mobile-first responsive font sizes - INCREASED */
-    --font-xs: 1rem;
-    --font-sm: 1.125rem;
-    --font-base: 1.25rem;
-    --font-lg: 1.5rem;
-    --font-xl: 2rem;
-    --font-2xl: 2.5rem;
-    --font-3xl: 3rem;
-    --font-4xl: 3.5rem;
 }
 
 /* Reset and base styles */
@@ -66,22 +48,45 @@ body.scrollable-page {
     justify-content: flex-start;
 }
 
-/* Scrollable container for special pages */
+/* ===========================================
+   MOBILE-FIRST DESIGN (Default - up to 768px)
+   =========================================== */
+
+/* Mobile spacing and typography */
+:root {
+    --mobile-spacing-xs: 0.5rem;
+    --mobile-spacing-sm: 1rem;
+    --mobile-spacing-md: 1.5rem;
+    --mobile-spacing-lg: 2rem;
+    --mobile-spacing-xl: 2.5rem;
+    --mobile-spacing-xxl: 3rem;
+    
+    --mobile-font-xs: 1rem;
+    --mobile-font-sm: 1.125rem;
+    --mobile-font-base: 1.25rem;
+    --mobile-font-lg: 1.5rem;
+    --mobile-font-xl: 2rem;
+    --mobile-font-2xl: 2.5rem;
+    --mobile-font-3xl: 3rem;
+    --mobile-font-4xl: 3.5rem;
+}
+
+/* Mobile scrollable container */
 .scrollable-container {
     width: 100%;
     max-width: 100vw;
     margin: 0 auto;
-    padding: var(--spacing-lg);
+    padding: var(--mobile-spacing-lg);
     background: var(--primary-bg);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 100px; /* More space for credit button */
+    padding-bottom: 120px; /* Space for credit button */
 }
 
-/* Menu container - mobile-first design with LARGER sizing */
+/* Mobile menu container */
 .menu-container {
     display: flex;
     flex-direction: column;
@@ -89,19 +94,19 @@ body.scrollable-page {
     justify-content: flex-start;
     height: 100vh;
     width: 100vw;
-    padding: var(--spacing-lg);
+    padding: var(--mobile-spacing-lg);
     overflow-y: auto;
     overflow-x: hidden;
     background: var(--primary-bg);
-    padding-bottom: 100px; /* More space for credit button */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-bottom: 120px; /* Space for credit button */
+    -webkit-overflow-scrolling: touch;
 }
 
 .menu-container h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-3xl);
-    font-weight: 100; /* Montserrat Thin */
-    margin: var(--spacing-xl) 0;
+    font-size: var(--mobile-font-3xl);
+    font-weight: 100;
+    margin: var(--mobile-spacing-xl) 0;
     color: var(--text-primary);
     text-shadow: none;
     letter-spacing: 0.02em;
@@ -109,28 +114,28 @@ body.scrollable-page {
     text-align: center;
 }
 
-/* Button container - mobile optimized with LARGER spacing */
+/* Mobile button container */
 .button-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--mobile-spacing-md);
     width: 100%;
     max-width: 100vw;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--mobile-spacing-md);
     flex: 1;
     justify-content: flex-start;
 }
 
-/* Mobile-first button system - MUCH LARGER */
+/* Mobile buttons */
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100; /* Montserrat Thin */
+    font-weight: 100;
     background: var(--secondary-bg);
     color: var(--text-primary);
-    font-size: var(--font-lg);
-    padding: var(--spacing-lg);
-    border: 0.5px solid var(--border-color); /* 50% thinner border */
+    font-size: var(--mobile-font-lg);
+    padding: var(--mobile-spacing-lg);
+    border: 0.5px solid var(--border-color);
     border-radius: 0;
     cursor: pointer;
     margin: 0;
@@ -139,7 +144,7 @@ body.scrollable-page {
     display: block;
     width: 100%;
     max-width: calc(100vw - 3rem);
-    min-height: 60px; /* Larger minimum touch target */
+    min-height: 60px;
     position: relative;
     overflow: hidden;
     box-shadow: none;
@@ -177,7 +182,7 @@ body.scrollable-page {
     background: var(--hover-bg);
 }
 
-/* Slider container - responsive */
+/* Mobile slider container */
 .slider-container {
     display: flex;
     flex-direction: column;
@@ -197,7 +202,7 @@ body.scrollable-page {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: var(--spacing-lg);
+    padding: var(--mobile-spacing-lg);
     position: relative;
     background: var(--primary-bg);
 }
@@ -206,24 +211,20 @@ body.scrollable-page {
     opacity: 1;
 }
 
-/* Mobile-optimized poem styling - LARGER */
+/* Mobile poem styling */
 .poem {
     font-family: 'Montserrat', sans-serif;
     background: var(--secondary-bg);
-    padding: var(--spacing-xl);
+    padding: var(--mobile-spacing-xl);
     border: none;
     border-radius: 0;
-    font-size: var(--font-lg);
+    font-size: var(--mobile-font-lg);
     line-height: 1.8;
     width: 100%;
     max-width: calc(100vw - 3rem);
     box-shadow: none;
     position: relative;
     overflow: hidden;
-}
-
-.poem::before {
-    display: none;
 }
 
 .poem p {
@@ -233,22 +234,17 @@ body.scrollable-page {
     margin: 0;
     text-shadow: none;
     color: var(--text-primary);
-    font-weight: 100; /* Montserrat Thin */
+    font-weight: 100;
     word-wrap: break-word;
     hyphens: auto;
 }
 
-/* Blur effect */
-.blurring {
-    filter: blur(10px);
-}
-
-/* Return button specific styling */
+/* Mobile return button */
 .return {
     background: var(--primary-bg);
     color: var(--text-primary);
-    font-weight: 100; /* Montserrat Thin */
-    border: 0.5px solid var(--border-color); /* 50% thinner border */
+    font-weight: 100;
+    border: 0.5px solid var(--border-color);
     border-radius: 0;
     box-shadow: none;
 }
@@ -259,13 +255,13 @@ body.scrollable-page {
     box-shadow: none;
 }
 
-/* Mobile-optimized credit button - LARGER and always visible */
+/* Mobile credit button */
 .credit, .credit-button {
     position: fixed;
-    bottom: var(--spacing-lg);
-    left: var(--spacing-lg);
-    font-size: var(--font-sm);
-    z-index: 9999; /* Higher z-index */
+    bottom: var(--mobile-spacing-lg);
+    left: var(--mobile-spacing-lg);
+    font-size: var(--mobile-font-sm);
+    z-index: 9999;
     transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
     pointer-events: auto;
@@ -274,17 +270,17 @@ body.scrollable-page {
 .credit {
     color: var(--text-secondary);
     opacity: 0.8;
-    font-weight: 100; /* Montserrat Thin */
+    font-weight: 100;
 }
 
 .credit-button {
     color: var(--text-primary);
     background: var(--secondary-bg);
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--mobile-spacing-sm) var(--mobile-spacing-md);
     border: 0.5px solid var(--border-color);
     border-radius: 0;
     text-decoration: none;
-    font-weight: 100; /* Montserrat Thin */
+    font-weight: 100;
     box-shadow: none;
     white-space: nowrap;
     min-height: 44px;
@@ -299,31 +295,18 @@ body.scrollable-page {
     box-shadow: none;
 }
 
-/* Reflection page specific styles - LARGER */
-.reflection-image {
+/* Mobile reflection page styles */
+.reflection-image, .reflection-image-full {
     width: 100%;
     max-width: calc(100vw - 3rem);
     height: auto;
     display: block;
-    margin: 0 auto var(--spacing-xl) auto;
-    border: 0.5px solid var(--border-color); /* 50% thinner border */
+    margin: 0 auto var(--mobile-spacing-xl) auto;
+    border: 0.5px solid var(--border-color);
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease;
-}
-
-/* Full-width image display for Minamahal Kong Estranghero - LARGER */
-.reflection-image-full {
-    width: auto;
-    max-width: calc(100vw - 3rem);
-    height: auto;
-    display: block;
-    margin: 0 auto var(--spacing-xl) auto;
-    border: 0.5px solid var(--border-color); /* 50% thinner border */
-    border-radius: 0;
-    box-shadow: none;
-    transition: transform 0.3s ease;
-    object-fit: none;
+    object-fit: contain;
 }
 
 .reflection-image:hover, .reflection-image-full:hover {
@@ -332,13 +315,13 @@ body.scrollable-page {
 
 .text-box {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-base);
+    font-size: var(--mobile-font-base);
     line-height: 1.8;
-    padding: var(--spacing-lg);
+    padding: var(--mobile-spacing-lg);
     background: var(--secondary-bg);
-    border: 0.5px solid var(--border-color); /* 50% thinner border */
+    border: 0.5px solid var(--border-color);
     border-radius: 0;
-    margin: var(--spacing-lg) 0;
+    margin: var(--mobile-spacing-lg) 0;
     box-shadow: none;
     width: 100%;
     max-width: calc(100vw - 3rem);
@@ -346,10 +329,10 @@ body.scrollable-page {
 
 .text-box p {
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--mobile-spacing-md);
     text-align: left;
     color: var(--text-primary);
-    font-weight: 100; /* Montserrat Thin */
+    font-weight: 100;
     word-wrap: break-word;
     hyphens: auto;
 }
@@ -360,17 +343,16 @@ body.scrollable-page {
 
 .button-container {
     text-align: center;
-    margin-top: var(--spacing-xl);
-    padding: var(--spacing-lg);
+    margin-top: var(--mobile-spacing-xl);
+    padding: var(--mobile-spacing-lg);
     width: 100%;
 }
 
-/* Container for reflection page - LARGER */
 .container {
     width: 100%;
     max-width: 100vw;
     margin: 0 auto;
-    padding: var(--spacing-lg);
+    padding: var(--mobile-spacing-lg);
     background: var(--primary-bg);
     min-height: 100vh;
     display: flex;
@@ -379,40 +361,430 @@ body.scrollable-page {
     align-items: center;
 }
 
-/* Mobile-optimized scrollbar styling */
-.menu-container::-webkit-scrollbar {
-    width: 3px;
-}
-
-.menu-container::-webkit-scrollbar-track {
-    background: var(--primary-bg);
-}
-
-.menu-container::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 0;
-}
-
-.menu-container::-webkit-scrollbar-thumb:hover {
-    background: var(--text-primary);
-}
-
-/* Scrollbar styling for scrollable pages */
+/* Mobile scrollbar styling */
+.menu-container::-webkit-scrollbar,
 .scrollable-page::-webkit-scrollbar {
     width: 3px;
 }
 
+.menu-container::-webkit-scrollbar-track,
 .scrollable-page::-webkit-scrollbar-track {
     background: var(--primary-bg);
 }
 
+.menu-container::-webkit-scrollbar-thumb,
 .scrollable-page::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 0;
 }
 
+.menu-container::-webkit-scrollbar-thumb:hover,
 .scrollable-page::-webkit-scrollbar-thumb:hover {
     background: var(--text-primary);
+}
+
+/* ===========================================
+   DESKTOP DESIGN (769px and above)
+   =========================================== */
+
+@media (min-width: 769px) {
+    /* Desktop spacing and typography */
+    :root {
+        --desktop-spacing-xs: 0.75rem;
+        --desktop-spacing-sm: 1.25rem;
+        --desktop-spacing-md: 2rem;
+        --desktop-spacing-lg: 3rem;
+        --desktop-spacing-xl: 4rem;
+        --desktop-spacing-xxl: 5rem;
+        
+        --desktop-font-xs: 0.875rem;
+        --desktop-font-sm: 1rem;
+        --desktop-font-base: 1.125rem;
+        --desktop-font-lg: 1.5rem;
+        --desktop-font-xl: 2rem;
+        --desktop-font-2xl: 3rem;
+        --desktop-font-3xl: 4rem;
+        --desktop-font-4xl: 5rem;
+    }
+
+    /* Desktop body adjustments */
+    body {
+        overflow: hidden;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    body.scrollable-page {
+        overflow: auto;
+        justify-content: flex-start;
+    }
+
+    /* Desktop scrollable container */
+    .scrollable-container {
+        padding: var(--desktop-spacing-xl);
+        padding-bottom: 100px;
+        max-width: 1200px;
+    }
+
+    /* Desktop menu container */
+    .menu-container {
+        height: 100vh;
+        padding: var(--desktop-spacing-xl);
+        padding-bottom: 100px;
+        overflow: hidden;
+        justify-content: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .menu-container h1 {
+        font-size: var(--desktop-font-3xl);
+        margin: var(--desktop-spacing-lg) 0 var(--desktop-spacing-xl) 0;
+        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 2px 4px var(--shadow-dark);
+        letter-spacing: -0.02em;
+    }
+
+    /* Desktop button container */
+    .button-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--desktop-spacing-md);
+        width: 100%;
+        max-width: 900px;
+        padding: 0;
+        justify-content: center;
+        align-items: start;
+    }
+
+    /* Desktop buttons */
+    .poem-button, .button {
+        font-size: var(--desktop-font-lg);
+        padding: var(--desktop-spacing-md) var(--desktop-spacing-lg);
+        min-height: 80px;
+        max-width: none;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        box-shadow: 
+            0 4px 6px var(--shadow-dark),
+            0 1px 3px var(--shadow-dark),
+            inset 0 1px 0 var(--shadow-light);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .poem-button:hover, .button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 
+            0 8px 25px var(--shadow-dark),
+            0 4px 10px var(--shadow-dark),
+            inset 0 1px 0 var(--shadow-light);
+    }
+
+    .poem-button:active, .button:active {
+        transform: translateY(0);
+        box-shadow: 
+            0 2px 4px var(--shadow-dark),
+            inset 0 1px 0 var(--shadow-light);
+    }
+
+    /* Desktop slider container */
+    .slider-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .slide {
+        padding: var(--desktop-spacing-xl);
+    }
+
+    /* Desktop poem styling */
+    .poem {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: var(--desktop-spacing-xxl);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: var(--desktop-font-lg);
+        line-height: 1.8;
+        max-width: 800px;
+        width: 100%;
+        box-shadow: 
+            0 8px 32px var(--shadow-dark),
+            0 4px 16px var(--shadow-dark),
+            inset 0 1px 0 var(--shadow-light);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .poem::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+        pointer-events: none;
+    }
+
+    .poem p {
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 1px 2px var(--shadow-dark);
+    }
+
+    /* Desktop return button */
+    .return {
+        background: var(--accent-color);
+        color: #000000;
+        font-weight: 500;
+        border: 2px solid var(--accent-color);
+        border-radius: 12px;
+        box-shadow: 
+            0 4px 15px rgba(255, 255, 255, 0.2),
+            0 2px 8px rgba(255, 255, 255, 0.1);
+    }
+
+    .return:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateY(-3px);
+        box-shadow: 
+            0 8px 25px rgba(255, 255, 255, 0.3),
+            0 4px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Desktop credit button */
+    .credit, .credit-button {
+        bottom: var(--desktop-spacing-md);
+        left: var(--desktop-spacing-md);
+        font-size: var(--desktop-font-sm);
+    }
+
+    .credit-button {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: var(--desktop-spacing-sm) var(--desktop-spacing-md);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 8px var(--shadow-dark);
+        min-height: 40px;
+    }
+
+    .credit-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px var(--shadow-dark);
+    }
+
+    /* Desktop reflection page styles */
+    .reflection-image, .reflection-image-full {
+        max-width: 600px;
+        border: 4px solid var(--accent-color);
+        border-radius: 12px;
+        box-shadow: 
+            0 8px 32px var(--shadow-dark),
+            0 4px 16px var(--shadow-dark);
+    }
+
+    .reflection-image:hover, .reflection-image-full:hover {
+        transform: scale(1.02);
+    }
+
+    .text-box {
+        font-size: var(--desktop-font-base);
+        padding: var(--desktop-spacing-xl);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin: var(--desktop-spacing-xl) 0;
+        box-shadow: 
+            0 8px 32px var(--shadow-dark),
+            inset 0 1px 0 var(--shadow-light);
+        max-width: 800px;
+    }
+
+    .button-container {
+        margin-top: var(--desktop-spacing-xxl);
+        padding: var(--desktop-spacing-xl);
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: var(--desktop-spacing-xl);
+    }
+
+    /* Desktop scrollbar styling */
+    .menu-container::-webkit-scrollbar,
+    .scrollable-page::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .menu-container::-webkit-scrollbar-track,
+    .scrollable-page::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+
+    .menu-container::-webkit-scrollbar-thumb,
+    .scrollable-page::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+    }
+
+    .menu-container::-webkit-scrollbar-thumb:hover,
+    .scrollable-page::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* ===========================================
+   LARGE DESKTOP OPTIMIZATIONS (1441px+)
+   =========================================== */
+
+@media (min-width: 1441px) {
+    :root {
+        --desktop-font-base: 1.25rem;
+        --desktop-font-lg: 1.75rem;
+        --desktop-font-xl: 2.25rem;
+        --desktop-font-2xl: 3.5rem;
+        --desktop-font-3xl: 4.5rem;
+        --desktop-font-4xl: 6rem;
+    }
+
+    .poem {
+        max-width: 1000px;
+        padding: 4rem;
+    }
+
+    .poem-button, .button {
+        font-size: var(--desktop-font-xl);
+        padding: 2rem 2.5rem;
+        min-height: 100px;
+    }
+
+    .button-group {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        max-width: 1200px;
+        gap: var(--desktop-spacing-lg);
+    }
+
+    .text-box {
+        max-width: 1000px;
+        font-size: var(--desktop-font-lg);
+    }
+
+    .reflection-image, .reflection-image-full {
+        max-width: 800px;
+    }
+}
+
+/* ===========================================
+   MOBILE SPECIFIC BREAKPOINTS
+   =========================================== */
+
+/* Small phones (up to 374px) */
+@media (max-width: 374px) {
+    :root {
+        --mobile-spacing-xs: 0.5rem;
+        --mobile-spacing-sm: 0.75rem;
+        --mobile-spacing-md: 1rem;
+        --mobile-spacing-lg: 1.5rem;
+        --mobile-spacing-xl: 2rem;
+        --mobile-font-xs: 0.9rem;
+        --mobile-font-sm: 1rem;
+        --mobile-font-base: 1.125rem;
+        --mobile-font-lg: 1.25rem;
+        --mobile-font-xl: 1.5rem;
+        --mobile-font-2xl: 2rem;
+        --mobile-font-3xl: 2.5rem;
+    }
+    
+    .menu-container, .scrollable-container {
+        padding: var(--mobile-spacing-md);
+        padding-bottom: 90px;
+    }
+    
+    .poem-button, .button {
+        font-size: var(--mobile-font-base);
+        padding: var(--mobile-spacing-md);
+        max-width: calc(100vw - 2rem);
+        min-height: 56px;
+    }
+    
+    .credit-button {
+        bottom: var(--mobile-spacing-md);
+        left: var(--mobile-spacing-md);
+        font-size: var(--mobile-font-xs);
+        min-height: 40px;
+    }
+}
+
+/* Standard phones (375px - 480px) */
+@media (min-width: 375px) and (max-width: 480px) {
+    .menu-container, .scrollable-container {
+        padding: var(--mobile-spacing-lg);
+        padding-bottom: 100px;
+    }
+    
+    .poem-button, .button {
+        font-size: var(--mobile-font-lg);
+        padding: var(--mobile-spacing-lg);
+        min-height: 60px;
+    }
+}
+
+/* Large phones (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --mobile-font-base: 1.375rem;
+        --mobile-font-lg: 1.625rem;
+        --mobile-font-xl: 2.125rem;
+        --mobile-font-2xl: 2.75rem;
+        --mobile-font-3xl: 3.25rem;
+    }
+    
+    .menu-container, .scrollable-container {
+        padding: var(--mobile-spacing-xl);
+        padding-bottom: 110px;
+    }
+    
+    .poem-button, .button {
+        font-size: var(--mobile-font-xl);
+        min-height: 70px;
+        max-width: calc(100vw - 4rem);
+    }
+    
+    .poem {
+        max-width: calc(100vw - 4rem);
+        padding: var(--mobile-spacing-xxl);
+    }
+    
+    .text-box {
+        max-width: calc(100vw - 4rem);
+        font-size: var(--mobile-font-lg);
+    }
+}
+
+/* ===========================================
+   SHARED STYLES AND UTILITIES
+   =========================================== */
+
+/* Blur effect */
+.blurring {
+    filter: blur(10px);
 }
 
 /* Fade-in animations */
@@ -432,326 +804,40 @@ body.scrollable-page {
     }
 }
 
-/* Responsive breakpoints - Mobile-first approach with LARGER base sizes */
-
-/* Small phones (up to 374px) - Still readable */
-@media (max-width: 374px) {
-    :root {
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 0.75rem;
-        --spacing-md: 1rem;
-        --spacing-lg: 1.5rem;
-        --spacing-xl: 2rem;
-        --spacing-xxl: 2.5rem;
-        --font-xs: 0.9rem;
-        --font-sm: 1rem;
-        --font-base: 1.125rem;
-        --font-lg: 1.25rem;
-        --font-xl: 1.5rem;
-        --font-2xl: 2rem;
-        --font-3xl: 2.5rem;
-    }
-    
-    .menu-container {
-        padding: var(--spacing-md);
-        padding-bottom: 90px;
-    }
-    
-    .scrollable-container {
-        padding: var(--spacing-md);
-        padding-bottom: 90px;
-    }
-    
-    .menu-container h1 {
-        font-size: var(--font-2xl);
-        margin: var(--spacing-lg) 0;
-    }
-    
-    .button-group {
-        gap: var(--spacing-sm);
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .poem-button, .button {
-        font-size: var(--font-base);
-        padding: var(--spacing-md);
-        max-width: calc(100vw - 2rem);
-        min-height: 56px;
-    }
-    
-    .credit-button {
-        bottom: var(--spacing-md);
-        left: var(--spacing-md);
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-xs);
-        min-height: 40px;
-    }
-    
-    .poem {
-        padding: var(--spacing-lg);
-        font-size: var(--font-base);
-        max-width: calc(100vw - 2rem);
-    }
-    
-    .text-box {
-        padding: var(--spacing-md);
-        font-size: var(--font-sm);
-        max-width: calc(100vw - 2rem);
-    }
-    
-    .reflection-image-full {
-        max-width: calc(100vw - 2rem);
-    }
-}
-
-/* Standard phones (375px - 480px) - Optimal mobile size */
-@media (min-width: 375px) and (max-width: 480px) {
-    .menu-container {
-        padding: var(--spacing-lg);
-        padding-bottom: 100px;
-    }
-    
-    .scrollable-container {
-        padding: var(--spacing-lg);
-        padding-bottom: 100px;
-    }
-    
-    .menu-container h1 {
-        font-size: var(--font-3xl);
-        margin: var(--spacing-xl) 0;
-    }
-    
-    .button-group {
-        gap: var(--spacing-md);
-        padding: 0 var(--spacing-md);
-    }
-    
-    .poem-button, .button {
-        font-size: var(--font-lg);
-        padding: var(--spacing-lg);
-        max-width: calc(100vw - 3rem);
-        min-height: 60px;
-    }
-    
-    .credit-button {
-        bottom: var(--spacing-lg);
-        left: var(--spacing-lg);
-        font-size: var(--font-sm);
-        min-height: 44px;
-    }
-    
-    .poem {
-        padding: var(--spacing-xl);
-        max-width: calc(100vw - 3rem);
-        font-size: var(--font-lg);
-    }
-    
-    .slide {
-        padding: var(--spacing-lg);
-    }
-    
-    .text-box {
-        padding: var(--spacing-lg);
-        max-width: calc(100vw - 3rem);
-        font-size: var(--font-base);
-    }
-    
-    .reflection-image-full {
-        max-width: calc(100vw - 3rem);
-    }
-}
-
-/* Large phones (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-    :root {
-        --font-base: 1.375rem;
-        --font-lg: 1.625rem;
-        --font-xl: 2.125rem;
-        --font-2xl: 2.75rem;
-        --font-3xl: 3.25rem;
-    }
-    
-    .menu-container {
-        padding: var(--spacing-xl);
-        padding-bottom: 110px;
-    }
-    
-    .scrollable-container {
-        padding: var(--spacing-xl);
-        padding-bottom: 110px;
-    }
-    
-    .poem {
-        max-width: calc(100vw - 4rem);
-        padding: var(--spacing-xxl);
-    }
-    
-    .poem-button, .button {
-        max-width: calc(100vw - 4rem);
-        font-size: var(--font-xl);
-        min-height: 70px;
-    }
-    
-    .button-group {
-        max-width: calc(100vw - 4rem);
-    }
-    
-    .text-box {
-        max-width: calc(100vw - 4rem);
-        font-size: var(--font-lg);
-    }
-    
-    .reflection-image-full {
-        max-width: calc(100vw - 4rem);
-    }
-}
-
-/* Tablets (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    :root {
-        --font-base: 1.5rem;
-        --font-lg: 1.75rem;
-        --font-xl: 2.25rem;
-        --font-2xl: 3rem;
-        --font-3xl: 3.75rem;
-    }
-    
-    .poem {
-        max-width: 80vw;
-        padding: var(--spacing-xxl);
-    }
-    
-    .poem-button, .button {
-        max-width: 600px;
-        font-size: var(--font-xl);
-        min-height: 75px;
-    }
-    
-    .button-group {
-        max-width: 650px;
-    }
-    
-    .menu-container h1 {
-        margin: var(--spacing-xxl) 0;
-    }
-    
-    .reflection-image-full {
-        max-width: 80vw;
-    }
-}
-
-/* Desktop (1025px - 1440px) */
-@media (min-width: 1025px) and (max-width: 1440px) {
-    :root {
-        --font-base: 1.6rem;
-        --font-lg: 1.9rem;
-        --font-xl: 2.4rem;
-        --font-2xl: 3.5rem;
-        --font-3xl: 4.5rem;
-    }
-    
-    .poem {
-        max-width: 70vw;
-    }
-    
-    .poem-button, .button {
-        max-width: 650px;
-        font-size: var(--font-xl);
-        min-height: 80px;
-    }
-    
-    .button-group {
-        max-width: 700px;
-    }
-    
-    .reflection-image-full {
-        max-width: 70vw;
-    }
-}
-
-/* Large desktop (1441px+) */
-@media (min-width: 1441px) {
-    :root {
-        --font-xs: 1.125rem;
-        --font-sm: 1.25rem;
-        --font-base: 1.75rem;
-        --font-lg: 2.125rem;
-        --font-xl: 2.625rem;
-        --font-2xl: 4rem;
-        --font-3xl: 5rem;
-        --font-4xl: 6rem;
-    }
-    
-    .poem {
-        max-width: 60vw;
-        padding: 4rem;
-    }
-    
-    .poem-button, .button {
-        max-width: 700px;
-        padding: 2rem 2.5rem;
-        font-size: var(--font-xl);
-        min-height: 90px;
-    }
-    
-    .button-group {
-        max-width: 750px;
-    }
-    
-    .reflection-image-full {
-        max-width: 60vw;
-    }
-}
-
 /* Landscape orientation adjustments for mobile */
-@media (orientation: landscape) and (max-height: 600px) {
-    .menu-container {
-        padding: var(--spacing-md);
-        padding-bottom: 80px;
-    }
-    
-    .scrollable-container {
-        padding: var(--spacing-md);
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 600px) {
+    .menu-container, .scrollable-container {
+        padding: var(--mobile-spacing-md);
         padding-bottom: 80px;
     }
     
     .menu-container h1 {
-        margin: var(--spacing-md) 0;
-        font-size: var(--font-2xl);
+        margin: var(--mobile-spacing-md) 0;
+        font-size: var(--mobile-font-2xl);
     }
     
     .button-group {
-        gap: var(--spacing-sm);
-        padding-bottom: var(--spacing-md);
+        gap: var(--mobile-spacing-sm);
     }
     
     .poem {
-        padding: var(--spacing-lg);
+        padding: var(--mobile-spacing-lg);
         max-height: 70vh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
     
-    .slide {
-        padding: var(--spacing-md);
-    }
-    
     .poem-button, .button {
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: var(--font-base);
+        padding: var(--mobile-spacing-md) var(--mobile-spacing-lg);
+        font-size: var(--mobile-font-base);
         min-height: 50px;
     }
     
     .credit-button {
-        bottom: var(--spacing-sm);
-        left: var(--spacing-sm);
-        font-size: var(--font-xs);
-        padding: var(--spacing-xs) var(--spacing-sm);
+        bottom: var(--mobile-spacing-sm);
+        left: var(--mobile-spacing-sm);
+        font-size: var(--mobile-font-xs);
         min-height: 36px;
-    }
-    
-    .reflection-image-full {
-        max-width: 85vw;
     }
 }
 
@@ -782,45 +868,21 @@ body.scrollable-page {
 
 /* Focus styles for accessibility */
 .poem-button:focus, .button:focus, .credit-button:focus {
-    outline: 0.5px solid var(--accent-color); /* 50% thinner outline */
+    outline: 2px solid var(--accent-color);
     outline-offset: 2px;
 }
 
-/* Loading states */
-.loading {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-/* Error states */
-.error {
-    border-color: #ffffff;
-    background: var(--primary-bg);
-}
-
-/* Print styles */
-@media print {
-    body {
-        background: white;
-        color: black;
-    }
-    
-    .credit-button, .button, .poem-button {
-        display: none;
-    }
-    
-    .poem {
-        background: white;
-        border: none;
-        box-shadow: none;
-        page-break-inside: avoid;
+@media (max-width: 768px) {
+    .poem-button:focus, .button:focus, .credit-button:focus {
+        outline: 0.5px solid var(--accent-color);
+        outline-offset: 2px;
     }
 }
 
 /* Touch-specific optimizations */
 @media (hover: none) and (pointer: coarse) {
     .poem-button, .button {
-        min-height: 60px; /* Larger touch targets */
+        min-height: 60px;
     }
     
     .credit-button {
@@ -842,20 +904,59 @@ body.scrollable-page {
 
 /* Safe area adjustments for devices with notches */
 @supports (padding: max(0px)) {
-    .menu-container {
-        padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
-        padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
-        padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
+    @media (max-width: 768px) {
+        .menu-container, .scrollable-container {
+            padding-left: max(var(--mobile-spacing-lg), env(safe-area-inset-left));
+            padding-right: max(var(--mobile-spacing-lg), env(safe-area-inset-right));
+            padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
+        }
+        
+        .credit-button {
+            bottom: max(var(--mobile-spacing-lg), env(safe-area-inset-bottom) + var(--mobile-spacing-md));
+            left: max(var(--mobile-spacing-lg), env(safe-area-inset-left) + var(--mobile-spacing-md));
+        }
     }
     
-    .scrollable-container {
-        padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
-        padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
-        padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
+    @media (min-width: 769px) {
+        .menu-container, .scrollable-container {
+            padding-left: max(var(--desktop-spacing-xl), env(safe-area-inset-left));
+            padding-right: max(var(--desktop-spacing-xl), env(safe-area-inset-right));
+            padding-bottom: max(100px, env(safe-area-inset-bottom) + 80px);
+        }
+        
+        .credit-button {
+            bottom: max(var(--desktop-spacing-md), env(safe-area-inset-bottom) + var(--desktop-spacing-sm));
+            left: max(var(--desktop-spacing-md), env(safe-area-inset-left) + var(--desktop-spacing-sm));
+        }
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
     }
     
-    .credit-button {
-        bottom: max(var(--spacing-lg), env(safe-area-inset-bottom) + var(--spacing-md));
-        left: max(var(--spacing-lg), env(safe-area-inset-left) + var(--spacing-md));
+    .credit-button, .button, .poem-button {
+        display: none;
     }
+    
+    .poem {
+        background: white;
+        border: none;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}
+
+/* Loading and error states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.error {
+    border-color: #ffffff;
+    background: var(--primary-bg);
 }
