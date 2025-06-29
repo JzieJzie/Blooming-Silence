@@ -2,147 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="A collection of poetry exploring love, loss, and the human experience">
-    <meta name="keywords" content="poetry, poems, literature, love, emotions">
-    <meta name="author" content="@ddd.j_a.v">
-    <meta name="theme-color" content="#000000">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Poetry Collection - Blooming Silence">
-    <meta property="og:description" content="A collection of poetry exploring love, loss, and the human experience">
-    <meta property="og:url" content="https://bloomingsilence.ph">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="Poetry Collection - Blooming Silence">
-    <meta property="twitter:description" content="A collection of poetry exploring love, loss, and the human experience">
-    
-    <title>Poetry Collection - Blooming Silence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Collection</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap" as="style">
-    
-    <script>
-        // Optimized navigation function
-        function goToPoem(url) {
-            // Prevent double-clicks
-            if (document.body.classList.contains('navigating')) return;
-            document.body.classList.add('navigating');
-            
-            document.body.style.transition = "opacity 500ms cubic-bezier(0.4, 0, 0.2, 1)";
-            document.body.style.opacity = "0";
-            
-            setTimeout(() => {
-                window.location.href = url;
-            }, 500);
-        }
-
-        // Preload pages on hover for better UX
-        function preloadPage(url) {
-            const link = document.createElement('link');
-            link.rel = 'prefetch';
-            link.href = url;
-            document.head.appendChild(link);
-        }
-
-        // Enhanced page initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            // Staggered animation for buttons
-            const buttons = document.querySelectorAll('.poem-button');
-            buttons.forEach((button, index) => {
-                button.style.animationDelay = `${index * 0.1}s`;
-                
-                // Add preload on hover
-                button.addEventListener('mouseenter', function() {
-                    const url = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-                    preloadPage(url);
-                });
-            });
-
-            // Keyboard navigation for menu
-            document.addEventListener('keydown', function(e) {
-                const buttons = Array.from(document.querySelectorAll('.poem-button'));
-                const currentFocus = document.activeElement;
-                const currentIndex = buttons.indexOf(currentFocus);
-
-                switch(e.key) {
-                    case 'ArrowDown':
-                        e.preventDefault();
-                        const nextIndex = (currentIndex + 1) % buttons.length;
-                        buttons[nextIndex].focus();
-                        break;
-                    case 'ArrowUp':
-                        e.preventDefault();
-                        const prevIndex = currentIndex <= 0 ? buttons.length - 1 : currentIndex - 1;
-                        buttons[prevIndex].focus();
-                        break;
-                    case 'Enter':
-                    case ' ':
-                        if (currentFocus && currentFocus.classList.contains('poem-button')) {
-                            e.preventDefault();
-                            currentFocus.click();
-                        }
-                        break;
-                }
-            });
-
-            // Focus first button for keyboard users
-            const firstButton = document.querySelector('.poem-button');
-            if (firstButton) {
-                firstButton.setAttribute('tabindex', '0');
-            }
-        });
-    </script>
+    <script defer src="script.js"></script>
 </head>
 <body class="fade-in">
     <div class="menu-container">
         <h1>Wanna read?</h1>
-        <button class="poem-button" onclick="goToPoem('beloved-stranger.html')" aria-label="Read Beloved Stranger poem">
+        <button class="poem-button" onclick="goToPoem('beloved-stranger.html')">
             Beloved Stranger
         </button>
-        <button class="poem-button" onclick="goToPoem('habol-sa-mga-bituin.html')" aria-label="Read Habol sa mga Bituin poem">
+        <button class="poem-button" onclick="goToPoem('habol-sa-mga-bituin.html')">
             Habol sa mga Bituin
         </button>
-        <button class="poem-button" onclick="goToPoem('whispers-in-gaslight.html')" aria-label="Read Whispers In Gaslight poem">
+        <button class="poem-button" onclick="goToPoem('whispers-in-gaslight.html')">
             Whispers In Gaslight
         </button>
-        <button class="poem-button" onclick="goToPoem('keating-was-right.html')" aria-label="Read Keating Was Right poem">
+        <button class="poem-button" onclick="goToPoem('keating-was-right.html')">
             Keating Was Right
         </button>
-        <button class="poem-button" onclick="goToPoem('minamahal-kong-estranghero.html')" aria-label="Read Minamahal Kong Estranghero reflection">
+        <button class="poem-button" onclick="goToPoem('minamahal-kong-estranghero.html')">
             Minamahal Kong Estranghero
         </button>
-        <button class="poem-button" onclick="goToPoem('lagi-na-lang.html')" aria-label="Read Lagi Na Lang poem">
+        <button class="poem-button" onclick="goToPoem('lagi-na-lang.html')">
             Lagi Na Lang: Isang Tahimik Na Pagibig
         </button>
-        <button class="poem-button" onclick="goToPoem('through-the-years.html')" aria-label="Download Through The Years PDF">
+        <button class="poem-button" onclick="goToPoem('through-the-years.html')">
             Through The Years: The Ghost Of My Past
         </button>
-        <button class="poem-button" onclick="goToPoem('one-shot-final-verdict.html')" aria-label="Download One Shot Final Verdict PDF">
+        <button class="poem-button" onclick="goToPoem('one-shot-final-verdict.html')">
             One Shot: The Final Verdict
         </button>
-        <button class="poem-button" onclick="goToPoem('fearful-heart.html')" aria-label="Read Fearful Heart's Enemy poem">
+        <button class="poem-button" onclick="goToPoem('fearful-heart.html')">
             Fearful Heart's Enemy
         </button>
-        <button class="poem-button" onclick="goToPoem('sanctuary-of-one.html')" aria-label="Read Sanctuary of One poem">
+        <button class="poem-button" onclick="goToPoem('sanctuary-of-one.html')">
             Sanctuary of One
         </button>
-        <button class="poem-button" onclick="goToPoem('from-deaths-silence.html')" aria-label="Download From Death's Silence PDF">
+        <button class="poem-button" onclick="goToPoem('from-deaths-silence.html')">
             From Death's Silence, A Second Song: Rewriting Love Across Time
         </button>
     </div>
     
     <a href="https://www.instagram.com/ddd.j_a.v?igsh=bjVtM2pkeW5qdmgy" 
        target="_blank" 
-       rel="noopener noreferrer"
-       class="credit-button" 
-       aria-label="Visit Instagram profile @ddd.j_a.v">
+       class="credit-button">
         IG: @ddd.j_a.v
     </a>
 </body>
