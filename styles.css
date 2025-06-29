@@ -12,23 +12,23 @@
     --shadow-light: rgba(255, 255, 255, 0.1);
     --shadow-dark: rgba(0, 0, 0, 0.8);
     
-    /* Responsive spacing system */
-    --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
-    --spacing-sm: clamp(0.5rem, 2vw, 1rem);
-    --spacing-md: clamp(1rem, 3vw, 2rem);
-    --spacing-lg: clamp(1.5rem, 4vw, 3rem);
-    --spacing-xl: clamp(2rem, 5vw, 4rem);
-    --spacing-xxl: clamp(3rem, 8vw, 6rem);
+    /* Mobile-first responsive spacing system */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
     
-    /* Responsive font sizes */
-    --font-xs: clamp(0.75rem, 2.5vw, 0.875rem);
-    --font-sm: clamp(0.875rem, 3vw, 1rem);
-    --font-base: clamp(1rem, 3.5vw, 1.125rem);
-    --font-lg: clamp(1.125rem, 4vw, 1.5rem);
-    --font-xl: clamp(1.5rem, 5vw, 2rem);
-    --font-2xl: clamp(2rem, 6vw, 3rem);
-    --font-3xl: clamp(2.5rem, 8vw, 4rem);
-    --font-4xl: clamp(3rem, 10vw, 5rem);
+    /* Mobile-first responsive font sizes */
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-base: 1rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.5rem;
+    --font-2xl: 2rem;
+    --font-3xl: 2.5rem;
+    --font-4xl: 3rem;
 }
 
 /* Reset and base styles */
@@ -55,6 +55,7 @@ body, html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    position: relative;
 }
 
 /* Special styling for scrollable pages */
@@ -68,80 +69,84 @@ body.scrollable-page {
 /* Scrollable container for special pages */
 .scrollable-container {
     width: 100%;
-    max-width: min(90vw, 1200px);
+    max-width: 100vw;
     margin: 0 auto;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     background: var(--primary-bg);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: calc(var(--spacing-xl) + 60px); /* Extra space for credit button */
+    padding-bottom: 80px; /* Space for credit button */
 }
 
-/* Menu container - fully responsive with scrollable content */
+/* Menu container - mobile-first design */
 .menu-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
-    padding: var(--spacing-lg);
-    width: 100%;
-    max-width: 100vw;
+    width: 100vw;
+    padding: var(--spacing-md);
     overflow-y: auto;
     overflow-x: hidden;
     background: var(--primary-bg);
-    padding-bottom: calc(var(--spacing-xl) + 60px); /* Extra space for credit button */
+    padding-bottom: 80px; /* Space for credit button */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .menu-container h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-3xl);
+    font-size: var(--font-2xl);
     font-weight: 100; /* Montserrat Thin */
-    margin-bottom: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
     color: var(--text-primary);
     text-shadow: none;
-    letter-spacing: clamp(-0.02em, 0.1vw, 0.02em);
+    letter-spacing: 0.02em;
     flex-shrink: 0;
+    text-align: center;
 }
 
-/* Button container to ensure all buttons are visible */
+/* Button container - mobile optimized */
 .button-group {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-sm);
     width: 100%;
-    max-width: min(90vw, 600px);
-    padding-bottom: var(--spacing-xl);
+    max-width: 100vw;
+    padding: 0 var(--spacing-sm);
+    flex: 1;
+    justify-content: flex-start;
 }
 
-/* Responsive button system - sharp corners, 50% thinner borders */
+/* Mobile-first button system */
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100; /* Montserrat Thin */
     background: var(--secondary-bg);
     color: var(--text-primary);
-    font-size: var(--font-lg);
-    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-base);
+    padding: var(--spacing-md);
     border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     cursor: pointer;
     margin: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
-    display: inline-block;
+    display: block;
     width: 100%;
-    max-width: 500px;
-    min-width: 280px;
+    max-width: calc(100vw - 2rem);
+    min-height: 48px; /* Minimum touch target */
     position: relative;
     overflow: hidden;
     box-shadow: none;
     text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    line-height: 1.4;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .poem-button::before, .button::before {
@@ -192,7 +197,7 @@ body.scrollable-page {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     position: relative;
     background: var(--primary-bg);
 }
@@ -201,17 +206,17 @@ body.scrollable-page {
     opacity: 1;
 }
 
-/* Responsive poem styling - NO BORDERS */
+/* Mobile-optimized poem styling */
 .poem {
     font-family: 'Montserrat', sans-serif;
     background: var(--secondary-bg);
-    padding: var(--spacing-xl);
-    border: none; /* Removed border */
+    padding: var(--spacing-lg);
+    border: none;
     border-radius: 0;
-    font-size: var(--font-lg);
+    font-size: var(--font-base);
     line-height: 1.8;
-    max-width: min(90vw, 800px);
     width: 100%;
+    max-width: calc(100vw - 2rem);
     box-shadow: none;
     position: relative;
     overflow: hidden;
@@ -229,6 +234,8 @@ body.scrollable-page {
     text-shadow: none;
     color: var(--text-primary);
     font-weight: 100; /* Montserrat Thin */
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 /* Blur effect */
@@ -236,7 +243,7 @@ body.scrollable-page {
     filter: blur(10px);
 }
 
-/* Return button specific styling - sharp corners, 50% thinner border */
+/* Return button specific styling */
 .return {
     background: var(--primary-bg);
     color: var(--text-primary);
@@ -252,15 +259,16 @@ body.scrollable-page {
     box-shadow: none;
 }
 
-/* Credit styling - responsive, NO BORDER, always visible */
+/* Mobile-optimized credit button - always visible */
 .credit, .credit-button {
     position: fixed;
     bottom: var(--spacing-md);
     left: var(--spacing-md);
-    font-size: var(--font-sm);
-    z-index: 1000;
+    font-size: var(--font-xs);
+    z-index: 9999; /* Higher z-index */
     transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
+    pointer-events: auto;
 }
 
 .credit {
@@ -272,12 +280,17 @@ body.scrollable-page {
 .credit-button {
     color: var(--text-primary);
     background: var(--secondary-bg);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: none; /* Removed border */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 0.5px solid var(--border-color);
     border-radius: 0;
     text-decoration: none;
     font-weight: 100; /* Montserrat Thin */
     box-shadow: none;
+    white-space: nowrap;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .credit-button:hover {
@@ -286,32 +299,31 @@ body.scrollable-page {
     box-shadow: none;
 }
 
-/* Reflection page specific styles - sharp corners, 50% thinner border */
+/* Reflection page specific styles */
 .reflection-image {
     width: 100%;
-    max-width: min(90vw, 600px);
+    max-width: calc(100vw - 2rem);
     height: auto;
     display: block;
-    margin: 0 auto var(--spacing-xl) auto;
+    margin: 0 auto var(--spacing-lg) auto;
     border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease;
 }
 
-/* Full-width image display for Minamahal Kong Estranghero - COMPLETELY UNRESTRICTED */
+/* Full-width image display for Minamahal Kong Estranghero */
 .reflection-image-full {
-    width: auto; /* Let image determine its own width */
-    max-width: 95vw; /* Only limit to viewport width */
-    height: auto; /* Maintain aspect ratio */
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    height: auto;
     display: block;
-    margin: 0 auto var(--spacing-xl) auto;
+    margin: 0 auto var(--spacing-lg) auto;
     border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
     box-shadow: none;
     transition: transform 0.3s ease;
-    object-fit: none; /* Don't constrain the image fitting */
-    /* Removed max-height constraint to show full image */
+    object-fit: none;
 }
 
 .reflection-image:hover, .reflection-image-full:hover {
@@ -320,22 +332,26 @@ body.scrollable-page {
 
 .text-box {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-base);
+    font-size: var(--font-sm);
     line-height: 1.8;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     background: var(--secondary-bg);
     border: 0.5px solid var(--border-color); /* 50% thinner border */
     border-radius: 0;
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-md) 0;
     box-shadow: none;
+    width: 100%;
+    max-width: calc(100vw - 2rem);
 }
 
 .text-box p {
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     text-align: left;
     color: var(--text-primary);
     font-weight: 100; /* Montserrat Thin */
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .text-box p:last-child {
@@ -344,14 +360,15 @@ body.scrollable-page {
 
 .button-container {
     text-align: center;
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
     padding: var(--spacing-md);
+    width: 100%;
 }
 
 /* Container for reflection page */
 .container {
     width: 100%;
-    max-width: min(90vw, 1200px);
+    max-width: 100vw;
     margin: 0 auto;
     padding: var(--spacing-md);
     background: var(--primary-bg);
@@ -362,9 +379,9 @@ body.scrollable-page {
     align-items: center;
 }
 
-/* Scrollbar styling for menu container - sharp design, 50% thinner */
+/* Mobile-optimized scrollbar styling */
 .menu-container::-webkit-scrollbar {
-    width: 1px; /* 50% thinner */
+    width: 2px;
 }
 
 .menu-container::-webkit-scrollbar-track {
@@ -373,6 +390,7 @@ body.scrollable-page {
 
 .menu-container::-webkit-scrollbar-thumb {
     background: var(--border-color);
+    border-radius: 0;
 }
 
 .menu-container::-webkit-scrollbar-thumb:hover {
@@ -381,7 +399,7 @@ body.scrollable-page {
 
 /* Scrollbar styling for scrollable pages */
 .scrollable-page::-webkit-scrollbar {
-    width: 1px; /* 50% thinner */
+    width: 2px;
 }
 
 .scrollable-page::-webkit-scrollbar-track {
@@ -390,6 +408,7 @@ body.scrollable-page {
 
 .scrollable-page::-webkit-scrollbar-thumb {
     background: var(--border-color);
+    border-radius: 0;
 }
 
 .scrollable-page::-webkit-scrollbar-thumb:hover {
@@ -413,197 +432,231 @@ body.scrollable-page {
     }
 }
 
-/* Mobile-first responsive breakpoints */
+/* Responsive breakpoints - Mobile-first approach */
 
-/* Extra small phones (320px - 374px) */
+/* Small phones (up to 374px) */
 @media (max-width: 374px) {
     :root {
         --spacing-xs: 0.25rem;
         --spacing-sm: 0.5rem;
         --spacing-md: 0.75rem;
         --spacing-lg: 1rem;
-        --spacing-xl: 1.5rem;
-        --spacing-xxl: 2rem;
-        --font-xs: 0.75rem;
+        --spacing-xl: 1.25rem;
+        --spacing-xxl: 1.5rem;
+        --font-xs: 0.7rem;
         --font-sm: 0.8rem;
         --font-base: 0.9rem;
         --font-lg: 1rem;
-        --font-xl: 1.25rem;
+        --font-xl: 1.2rem;
         --font-2xl: 1.5rem;
-        --font-3xl: 2rem;
+        --font-3xl: 1.8rem;
     }
     
     .menu-container {
-        padding: var(--spacing-md);
-        padding-bottom: calc(var(--spacing-xl) + 50px);
+        padding: var(--spacing-sm);
+        padding-bottom: 70px;
     }
     
     .scrollable-container {
-        padding: var(--spacing-md);
-        padding-bottom: calc(var(--spacing-xl) + 50px);
+        padding: var(--spacing-sm);
+        padding-bottom: 70px;
     }
     
     .menu-container h1 {
-        margin-bottom: var(--spacing-md);
         font-size: var(--font-2xl);
+        margin: var(--spacing-md) 0;
     }
     
     .button-group {
         gap: var(--spacing-xs);
-        max-width: 95vw;
+        padding: 0 var(--spacing-xs);
     }
     
     .poem-button, .button {
-        min-width: 240px;
-        max-width: 95vw;
-        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-sm);
+        padding: var(--spacing-sm);
+        max-width: calc(100vw - 1rem);
+    }
+    
+    .credit-button {
+        bottom: var(--spacing-xs);
+        left: var(--spacing-xs);
+        padding: 4px 8px;
+        font-size: 0.65rem;
+    }
+    
+    .poem {
+        padding: var(--spacing-md);
+        font-size: var(--font-sm);
+        max-width: calc(100vw - 1rem);
+    }
+    
+    .text-box {
+        padding: var(--spacing-sm);
+        font-size: var(--font-xs);
+        max-width: calc(100vw - 1rem);
+    }
+    
+    .reflection-image-full {
+        max-width: calc(100vw - 1rem);
+    }
+}
+
+/* Standard phones (375px - 480px) */
+@media (min-width: 375px) and (max-width: 480px) {
+    .menu-container {
+        padding: var(--spacing-md);
+        padding-bottom: 75px;
+    }
+    
+    .scrollable-container {
+        padding: var(--spacing-md);
+        padding-bottom: 75px;
+    }
+    
+    .menu-container h1 {
+        font-size: var(--font-2xl);
+        margin: var(--spacing-lg) 0;
+    }
+    
+    .button-group {
+        gap: var(--spacing-sm);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .poem-button, .button {
         font-size: var(--font-base);
+        padding: var(--spacing-md);
+        max-width: calc(100vw - 2rem);
     }
     
     .credit-button {
         bottom: var(--spacing-sm);
         left: var(--spacing-sm);
-        padding: var(--spacing-xs) var(--spacing-sm);
         font-size: var(--font-xs);
-    }
-    
-    .text-box {
-        padding: var(--spacing-md);
-        font-size: var(--font-sm);
-    }
-    
-    .reflection-image-full {
-        max-width: 98vw; /* Allow almost full width on tiny screens */
-    }
-}
-
-/* Small phones (375px - 480px) */
-@media (min-width: 375px) and (max-width: 480px) {
-    :root {
-        --spacing-xs: 0.25rem;
-        --spacing-sm: 0.5rem;
-        --spacing-md: 1rem;
-        --spacing-lg: 1.5rem;
-        --spacing-xl: 2rem;
-        --spacing-xxl: 2.5rem;
-    }
-    
-    .menu-container {
-        padding: var(--spacing-md);
-        padding-bottom: calc(var(--spacing-xl) + 60px);
-    }
-    
-    .scrollable-container {
-        padding: var(--spacing-md);
-        padding-bottom: calc(var(--spacing-xl) + 60px);
-    }
-    
-    .menu-container h1 {
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .button-group {
-        gap: var(--spacing-xs);
-        max-width: 90vw;
     }
     
     .poem {
         padding: var(--spacing-lg);
-        margin: var(--spacing-sm);
+        max-width: calc(100vw - 2rem);
     }
     
     .slide {
         padding: var(--spacing-md);
     }
     
-    .poem-button, .button {
-        min-width: 260px;
-        max-width: 90vw;
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: var(--font-base);
-    }
-    
-    .credit-button {
-        bottom: var(--spacing-sm);
-        left: var(--spacing-sm);
+    .text-box {
+        padding: var(--spacing-md);
+        max-width: calc(100vw - 2rem);
     }
     
     .reflection-image-full {
-        max-width: 95vw;
+        max-width: calc(100vw - 2rem);
     }
 }
 
 /* Large phones (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --font-base: 1.1rem;
+        --font-lg: 1.25rem;
+        --font-xl: 1.6rem;
+        --font-2xl: 2.2rem;
+        --font-3xl: 2.8rem;
+    }
+    
+    .menu-container {
+        padding: var(--spacing-lg);
+        padding-bottom: 80px;
+    }
+    
+    .scrollable-container {
+        padding: var(--spacing-lg);
+        padding-bottom: 80px;
+    }
+    
     .poem {
-        max-width: 85vw;
+        max-width: calc(100vw - 3rem);
         padding: var(--spacing-xl);
     }
     
     .poem-button, .button {
-        min-width: 320px;
-        max-width: 400px;
+        max-width: calc(100vw - 3rem);
+        font-size: var(--font-lg);
     }
     
     .button-group {
-        max-width: 450px;
+        max-width: calc(100vw - 3rem);
     }
     
-    .menu-container {
-        padding-bottom: calc(var(--spacing-xl) + 60px);
-    }
-    
-    .scrollable-container {
-        padding-bottom: calc(var(--spacing-xl) + 60px);
+    .text-box {
+        max-width: calc(100vw - 3rem);
+        font-size: var(--font-base);
     }
     
     .reflection-image-full {
-        max-width: 90vw;
+        max-width: calc(100vw - 3rem);
     }
 }
 
 /* Tablets (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
+    :root {
+        --font-base: 1.2rem;
+        --font-lg: 1.4rem;
+        --font-xl: 1.8rem;
+        --font-2xl: 2.5rem;
+        --font-3xl: 3.2rem;
+    }
+    
     .poem {
         max-width: 80vw;
         padding: var(--spacing-xxl);
     }
     
     .poem-button, .button {
-        min-width: 350px;
-        max-width: 450px;
-    }
-    
-    .button-group {
         max-width: 500px;
-    }
-    
-    .menu-container h1 {
-        margin-bottom: var(--spacing-xl);
-    }
-    
-    .reflection-image-full {
-        max-width: 85vw;
-    }
-}
-
-/* Desktop (1025px - 1440px) */
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .poem {
-        max-width: 70vw;
-    }
-    
-    .poem-button, .button {
-        min-width: 400px;
-        max-width: 500px;
+        font-size: var(--font-lg);
     }
     
     .button-group {
         max-width: 550px;
     }
     
+    .menu-container h1 {
+        margin: var(--spacing-xl) 0;
+    }
+    
     .reflection-image-full {
         max-width: 80vw;
+    }
+}
+
+/* Desktop (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    :root {
+        --font-base: 1.3rem;
+        --font-lg: 1.6rem;
+        --font-xl: 2rem;
+        --font-2xl: 3rem;
+        --font-3xl: 4rem;
+    }
+    
+    .poem {
+        max-width: 70vw;
+    }
+    
+    .poem-button, .button {
+        max-width: 550px;
+        font-size: var(--font-lg);
+    }
+    
+    .button-group {
+        max-width: 600px;
+    }
+    
+    .reflection-image-full {
+        max-width: 70vw;
     }
 }
 
@@ -612,12 +665,12 @@ body.scrollable-page {
     :root {
         --font-xs: 0.875rem;
         --font-sm: 1rem;
-        --font-base: 1.125rem;
-        --font-lg: 1.5rem;
-        --font-xl: 2rem;
-        --font-2xl: 3rem;
-        --font-3xl: 4rem;
-        --font-4xl: 5rem;
+        --font-base: 1.4rem;
+        --font-lg: 1.8rem;
+        --font-xl: 2.2rem;
+        --font-2xl: 3.5rem;
+        --font-3xl: 4.5rem;
+        --font-4xl: 5.5rem;
     }
     
     .poem {
@@ -626,46 +679,47 @@ body.scrollable-page {
     }
     
     .poem-button, .button {
-        min-width: 450px;
-        max-width: 550px;
+        max-width: 600px;
         padding: 1.5rem 2rem;
+        font-size: var(--font-lg);
     }
     
     .button-group {
-        max-width: 600px;
+        max-width: 650px;
     }
     
     .reflection-image-full {
-        max-width: 75vw;
+        max-width: 60vw;
     }
 }
 
-/* Landscape orientation adjustments */
+/* Landscape orientation adjustments for mobile */
 @media (orientation: landscape) and (max-height: 600px) {
     .menu-container {
         padding: var(--spacing-sm);
-        padding-bottom: calc(var(--spacing-lg) + 50px);
+        padding-bottom: 60px;
     }
     
     .scrollable-container {
         padding: var(--spacing-sm);
-        padding-bottom: calc(var(--spacing-lg) + 50px);
+        padding-bottom: 60px;
     }
     
     .menu-container h1 {
-        margin-bottom: var(--spacing-sm);
-        font-size: var(--font-2xl);
+        margin: var(--spacing-sm) 0;
+        font-size: var(--font-xl);
     }
     
     .button-group {
         gap: var(--spacing-xs);
-        padding-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
     }
     
     .poem {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
         max-height: 70vh;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .slide {
@@ -674,17 +728,19 @@ body.scrollable-page {
     
     .poem-button, .button {
         padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-base);
+        font-size: var(--font-sm);
+        min-height: 40px;
     }
     
     .credit-button {
         bottom: var(--spacing-xs);
         left: var(--spacing-xs);
-        font-size: var(--font-xs);
+        font-size: 0.7rem;
+        padding: 3px 6px;
     }
     
     .reflection-image-full {
-        max-width: 90vw; /* Allow more width in landscape */
+        max-width: 85vw;
     }
 }
 
@@ -713,7 +769,7 @@ body.scrollable-page {
     }
 }
 
-/* Focus styles for accessibility - 50% thinner border */
+/* Focus styles for accessibility */
 .poem-button:focus, .button:focus, .credit-button:focus {
     outline: 0.5px solid var(--accent-color); /* 50% thinner outline */
     outline-offset: 2px;
@@ -747,5 +803,48 @@ body.scrollable-page {
         border: none;
         box-shadow: none;
         page-break-inside: avoid;
+    }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .poem-button, .button {
+        min-height: 48px; /* Ensure touch targets are large enough */
+    }
+    
+    .credit-button {
+        min-height: 32px;
+        min-width: 60px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .poem-button:hover, .button:hover, .credit-button:hover {
+        background: var(--secondary-bg);
+        transform: none;
+    }
+    
+    /* Add active states for touch feedback */
+    .poem-button:active, .button:active {
+        background: var(--hover-bg);
+    }
+}
+
+/* Safe area adjustments for devices with notches */
+@supports (padding: max(0px)) {
+    .menu-container {
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+        padding-bottom: max(80px, env(safe-area-inset-bottom) + 60px);
+    }
+    
+    .scrollable-container {
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+        padding-bottom: max(80px, env(safe-area-inset-bottom) + 60px);
+    }
+    
+    .credit-button {
+        bottom: max(var(--spacing-md), env(safe-area-inset-bottom) + var(--spacing-sm));
+        left: max(var(--spacing-md), env(safe-area-inset-left) + var(--spacing-sm));
     }
 }
