@@ -8,7 +8,7 @@
 
 body, html {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     background: #fffdd0;
     color: #000000;
     text-align: center;
@@ -34,7 +34,7 @@ body, html {
 
 .parallax-menu-container h1 {
     font-size: 3rem;
-    font-weight: 100;
+    font-weight: 300;
     margin-bottom: 60px;
     color: #000000;
 }
@@ -77,7 +77,7 @@ body, html {
 
 .poem-card h3 {
     font-size: 2rem;
-    font-weight: 100;
+    font-weight: 300;
     margin-bottom: 20px;
     color: #000000;
 }
@@ -112,7 +112,7 @@ body, html {
     background: transparent;
     color: #000000;
     font-size: 2rem;
-    font-weight: 100;
+    font-weight: 300;
     width: 60px;
     height: 60px;
     cursor: pointer;
@@ -147,7 +147,7 @@ body, html {
 
 .read-button {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     background: transparent;
     color: #000000;
     font-size: 1.2rem;
@@ -174,14 +174,14 @@ body, html {
 
 .menu-container h1 {
     font-size: 3rem;
-    font-weight: 100;
+    font-weight: 300;
     margin-bottom: 40px;
     color: #000000;
 }
 
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     background: transparent;
     color: #000000;
     font-size: 1.2rem;
@@ -230,7 +230,7 @@ body, html {
     background: transparent;
     padding: 40px;
     font-size: 1.5rem;
-    font-weight: 100;
+    font-weight: 300;
     line-height: 1.8;
     max-width: 800px;
     width: 100%;
@@ -243,7 +243,7 @@ body, html {
 .return {
     background: transparent;
     color: #000000;
-    font-weight: 100;
+    font-weight: 300;
     border: none;
 }
 
@@ -256,7 +256,7 @@ body, html {
     bottom: 20px;
     left: 20px;
     font-size: 0.9rem;
-    font-weight: 100;
+    font-weight: 300;
     color: #000000;
     text-decoration: none;
 }
@@ -281,7 +281,7 @@ body, html {
 
 .text-box {
     font-size: 1.1rem;
-    font-weight: 100;
+    font-weight: 300;
     line-height: 1.8;
     padding: 40px;
     background: transparent;
