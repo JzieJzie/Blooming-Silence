@@ -9,8 +9,8 @@
 body, html {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
-    background: #000000;
-    color: #ffffff;
+    background: #fffdd0;
+    color: #000000;
     text-align: center;
     overflow: hidden;
     height: 100vh;
@@ -36,7 +36,7 @@ body, html {
     font-size: 3rem;
     font-weight: 100;
     margin-bottom: 60px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .parallax-wrapper {
@@ -79,7 +79,7 @@ body, html {
     font-size: 2rem;
     font-weight: 100;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .clickable-title {
@@ -110,7 +110,7 @@ body, html {
 
 .arrow-btn {
     background: transparent;
-    color: #ffffff;
+    color: #000000;
     font-size: 2rem;
     font-weight: 100;
     width: 60px;
@@ -142,14 +142,14 @@ body, html {
 }
 
 .indicator.active {
-    background: #ffffff;
+    background: #000000;
 }
 
 .read-button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
     background: transparent;
-    color: #ffffff;
+    color: #000000;
     font-size: 1.2rem;
     padding: 15px 40px;
     cursor: pointer;
@@ -176,14 +176,14 @@ body, html {
     font-size: 3rem;
     font-weight: 100;
     margin-bottom: 40px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
     background: transparent;
-    color: #ffffff;
+    color: #000000;
     font-size: 1.2rem;
     padding: 15px 30px;
     cursor: pointer;
@@ -242,7 +242,7 @@ body, html {
 
 .return {
     background: transparent;
-    color: #ffffff;
+    color: #000000;
     font-weight: 100;
     border: none;
 }
@@ -257,7 +257,7 @@ body, html {
     left: 20px;
     font-size: 0.9rem;
     font-weight: 100;
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -329,55 +329,55 @@ body, html {
         font-size: 2rem;
         margin-bottom: 40px;
     }
-    
+
     .parallax-wrapper {
         height: 300px;
         max-width: 90vw;
     }
-    
+
     .poem-card {
         padding: 30px 20px;
     }
-    
+
     .poem-card h3 {
         font-size: 1.5rem;
         margin-bottom: 15px;
     }
-    
+
     .poem-card p {
         font-size: 0.9rem;
     }
-    
+
     .arrow-btn {
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
     }
-    
+
     .navigation-arrows {
         max-width: 100%;
         margin: 30px 0 15px 0;
     }
-    
+
     .read-button {
         font-size: 1rem;
         padding: 12px 30px;
     }
-    
+
     .menu-container h1 {
         font-size: 2rem;
     }
-    
+
     .poem-button, .button {
         min-width: 250px;
         font-size: 1rem;
     }
-    
+
     .poem {
         font-size: 1.2rem;
         padding: 30px;
     }
-    
+
     .slide {
         padding: 20px;
     }
