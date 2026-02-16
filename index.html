@@ -8,82 +8,37 @@
     <script defer src="script.js"></script>
 </head>
 <body class="fade-in">
-    <div class="parallax-menu-container">
-        <h1>Wanna read?</h1>
-        
-        <div class="parallax-wrapper">
-            <div class="parallax-slider" id="parallaxSlider">
-                <div class="poem-card active" data-url="beloved-stranger.html">
-                    <h3 class="clickable-title">Beloved Stranger</h3>
-                    <p>Traces of her presence still remain...</p>
-                </div>
-                <div class="poem-card" data-url="habol-sa-mga-bituin.html">
-                    <h3 class="clickable-title">Habol sa mga Bituin</h3>
-                    <p>Mula nang tayo'y magtagpo...</p>
-                </div>
-                <div class="poem-card" data-url="whispers-in-gaslight.html">
-                    <h3 class="clickable-title">Whispers In Gaslight</h3>
-                    <p>Beneath the soft glow of gaslit evenings...</p>
-                </div>
-                <div class="poem-card" data-url="keating-was-right.html">
-                    <h3 class="clickable-title">Keating Was Right</h3>
-                    <p>Some mornings, I oversleep...</p>
-                </div>
-                <!-- <div class="poem-card" data-url="minamahal-kong-estranghero.html">
-                    <h3 class="clickable-title">Minamahal Kong Estranghero</h3>
-                    <p>With the passage of time...</p>
-                </div> -->
-                <div class="poem-card" data-url="lagi-na-lang.html">
-                    <h3 class="clickable-title">Lagi Na Lang</h3>
-                    <p>Isang Tahimik na Pag-ibig</p>
-                </div>
-                <div class="poem-card" data-url="through-the-years.html">
-                    <h3 class="clickable-title">Through The Years</h3>
-                    <p>The Ghost Of My Past</p>
-                </div>
-                <div class="poem-card" data-url="one-shot-final-verdict.html">
-                    <h3 class="clickable-title">One Shot</h3>
-                    <p>The Final Verdict</p>
-                </div>
-                <div class="poem-card" data-url="fearful-heart.html">
-                    <h3 class="clickable-title">Fearful Heart's Enemy</h3>
-                    <p>Time won't stop to watch you doubt...</p>
-                </div>
-                <div class="poem-card" data-url="sanctuary-of-one.html">
-                    <h3 class="clickable-title">Sanctuary of One</h3>
-                    <p>I slam the door—let thunder roll...</p>
-                </div>
-                <div class="poem-card" data-url="from-deaths-silence.html">
-                    <h3 class="clickable-title">From Death's Silence</h3>
-                    <p>A Second Song: Rewriting Love Across Time</p>
-                </div>
+    <main class="library">
+        <h1>The Library</h1>
+
+        <section class="shelf">
+            <div class="shelf-label">Poems and Proses</div>
+            <div class="books">
+                <div class="book"><a href="#" onclick="goToPoem('beloved-stranger.html');return false;" aria-label="Read Beloved Stranger">Beloved<br>Stranger</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('habol-sa-mga-bituin.html');return false;" aria-label="Read Habol sa mga Bituin">Habol<br>sa<br>Bituin</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('whispers-in-gaslight.html');return false;" aria-label="Read Whispers in Gaslight">Whispers<br>Gaslight</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('keating-was-right.html');return false;" aria-label="Read Keating Was Right">Keating<br>Was<br>Right</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('lagi-na-lang.html');return false;" aria-label="Read Lagi Na Lang">Lagi<br>Na<br>Lang</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('fearful-heart.html');return false;" aria-label="Read Fearful Heart">Fearful<br>Heart</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('sanctuary-of-one.html');return false;" aria-label="Read Sanctuary of One">Sanctuary<br>of<br>One</a></div>
+                <div class="book"><a href="#" onclick="goToPoem('minamahal-kong-estranghero.html');return false;" aria-label="Read Minamahal Kong Estranghero">Minamahal<br>Kong<br>Estranghero</a></div>
             </div>
-        </div>
-        
-        <div class="navigation-arrows">
-            <button class="arrow-btn left-arrow" id="leftArrow">‹</button>
-            <button class="arrow-btn right-arrow" id="rightArrow">›</button>
-        </div>
-        
-        <div class="card-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-        </div>
-        
-        <button class="read-button" id="readButton">Read This Poem</button>
-    </div>
+        </section>
+
+        <section class="shelf">
+            <div class="shelf-label">Novels (PDF)</div>
+            <div class="books">
+                <div class="book"><a href="Files/ Through The Years- The Ghost Of My Past - JinAm-1.pdf" download aria-label="Download Through The Years PDF">Through<br>The<br>Years (PDF)</a></div>
+                <div class="book"><a href="Files/From Death's Silence, A Second Song- Rewriting Love Across Time - JinAm.pdf" download aria-label="Download From Death's Silence PDF">From Death's<br>Silence (PDF)</a></div>
+                <div class="book"><a href="Files/One-shot- The Final Verdict - JinAm.pdf" download aria-label="Download One-shot PDF">One-shot<br>(PDF)</a></div>
+            </div>
+        </section>
+
+    </main>
     
     <a href="https://www.instagram.com/ddd.j_a.v?igsh=bjVtM2pkeW5qdmgy" 
        target="_blank" 
+       rel="noopener noreferrer"
        class="credit-button">
         IG: @ddd.j_a.v
     </a>

@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+            // (Parallax bookshelf slider logic removed, classic bookshelf restored)
+        // (Removed parallax effect for bookshelf for flawless static layout)
     // Parallax menu functionality
     let currentCardIndex = 0;
     const cards = document.querySelectorAll(".poem-card");

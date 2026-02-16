@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Through The Years</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
-<body class="fade-in">
-  <div class="menu-container">
+<body>
+  <main class="page-wrap">
     <h1>Through The Years</h1>
-    <a href="Files/Through%20The%20Years-%20The%20Ghost%20Of%20My%20Past%20-%20JinAm.pdf" 
-       class="poem-button" 
-       download>
-      Download PDF
-    </a>
-    <a href="index.html" class="button return">Return?</a>
-  </div>
-  <div class="credit">@ddd.j_a.v</div>
+    <div class="poem">
+      <p>A collection of reflections spanning years, capturing fleeting moments of love, loss, and the passage of time. Download to read the full story.</p>
+    </div>
+    <a onclick="goToPoem('Files/Through%20The%20Years-%20The%20Ghost%20Of%20My%20Past%20-%20JinAm.pdf'); return false;" href="#" class="button return">Download PDF</a>
+    <a onclick="goToPoem('index.html'); return false;" href="#" class="back-link">← Back to Library</a>
+  </main>
+  <footer class="credit">IG: <a href="https://www.instagram.com/ddd.j_a.v?igsh=bjVtM2pkeW5qdmgy" target="_blank" rel="noopener noreferrer" style="color:var(--muted)">@ddd.j_a.v</a></footer>
 </body>
 </html>

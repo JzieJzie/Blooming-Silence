@@ -1,4 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
+/* Responsive and mobile optimization */
+@media (max-width: 900px) {
+    .library {
+        padding: 8px;
+        margin: 12px auto;
+    }
+    .books {
+        gap: 12px;
+        padding: 0 2vw;
+    }
+    .book, .book.small, .book.tall {
+        width: 90px;
+        height: 130px;
+        font-size: 0.85rem;
+        padding: 8px 4px;
+    }
+    .shelf {
+        padding: 12px 2vw 36px 2vw;
+        margin-bottom: 24px;
+    }
+    .shelf-label {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    .page-wrap {
+        max-width: 98vw;
+        padding: 18px 4vw;
+        font-size: 0.98rem;
+    }
+    .page-wrap h1 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .library {
+        padding: 2px;
+        margin: 2px auto;
+    }
+    .books {
+        gap: 7px;
+        padding: 0 1vw;
+    }
+    .book, .book.small, .book.tall {
+        width: 64px;
+        height: 90px;
+        font-size: 0.7rem;
+        padding: 4px 2px;
+    }
+    .shelf {
+        padding: 8px 1vw 20px 1vw;
+        margin-bottom: 12px;
+    }
+    .shelf-label {
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+    }
+    .page-wrap {
+        max-width: 100vw;
+        padding: 8px 2vw;
+        font-size: 0.92rem;
+    }
+    .page-wrap h1 {
+        font-size: 1.1rem;
+    }
+}
+/* (Parallax bookshelf styles removed, classic bookshelf restored) */
+.parallax-arrow {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.2rem;
+    cursor: pointer;
+    padding: 0 16px;
+    z-index: 3;
+    transition: color 0.2s;
+}
+.parallax-arrow:hover {
+    color: #aaa;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:wght@400;600&display=swap');
 
 * {
     margin: 0;
@@ -6,20 +86,22 @@
     box-sizing: border-box;
 }
 
-body, html {
-    font-family: 'Montserrat', sans-serif;
+/* Page / layout basics - allow scrolling and proper centering of book pages */
+html, body {
+    font-family: 'Merriweather', Georgia, serif;
     font-weight: 300;
-    background: #000000;
-    color: #ffffff;
-    text-align: center;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background: var(--bg, #0b0b0b);
+    color: var(--fg, #ffffff);
+    text-align: left;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+body { line-height: 1.6; }
 
 /* Parallax Menu Styles */
 .parallax-menu-container {
@@ -382,3 +464,186 @@ body, html {
         padding: 20px;
     }
 }
+
+/* Library / Bookshelf redesign (black & white) */
+:root{
+    --bg:#000000;
+    --fg:#ffffff;
+    --muted:#888888;
+    --shelf:#000000;
+    --book:#111111;
+    --book-text:#ffffff;
+}
+
+body, html {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+.library {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.library h1 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.shelf {
+    position: relative;
+    padding: 20px 10px 60px 10px;
+    margin-bottom: 40px;
+    border-top: 2px solid #222;
+    background: var(--shelf);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    overflow: visible;
+}
+
+.shelf::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 12px;
+    background: linear-gradient(180deg, #222 60%, #000 100%);
+    border-radius: 0 0 2px 2px;
+    opacity: 0.18;
+}
+
+.books {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    white-space: normal;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+
+.book, .book.small, .book.tall {
+    width: 120px;
+    height: 180px;
+    background: var(--book);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    text-transform: none;
+    text-align: center;
+    padding: 10px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s cubic-bezier(.25,.8,.25,1), border 0.2s;
+    border: 1.5px solid #222;
+    border-radius: 4px;
+    writing-mode: initial;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+}
+.book:hover {
+    /* Subtle shadow and zoom, no movement of shelf */
+    background: var(--book);
+    color: var(--book-text);
+    border: 2px solid #fff;
+    box-shadow: 0 6px 18px 0 rgba(0,0,0,0.16);
+    transform: scale(1.035);
+    z-index: 2;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+.book::before {
+    display: none;
+.book::after {
+    display: none;
+}
+}
+.book:hover::before {
+    transform: rotateY(-70deg);
+    box-shadow: 12px 0 24px 0 rgba(0,0,0,0.12);
+}
+.book.small, .book.tall { height: 180px; width: 120px; }
+
+
+.book a {
+    color: #fff;
+    text-decoration: none;
+    display:block;
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+}
+
+.shelf-label {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.back-link, .credit, .credit-button { color: var(--muted); }
+
+@media (max-width: 768px) {
+    .book { width: 64px; height: 160px; font-size: 0.7rem; }
+    .book.small { height: 120px; }
+    .book.tall { height: 190px; }
+}
+
+/* Poem / page card to emulate an open book on dark background */
+.page-wrap {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--bg);
+    color: var(--fg);
+    color: #111111;
+    padding: 48px 56px;
+    border-radius: 6px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.6);
+    position: relative;
+    border-left: 14px solid rgba(0,0,0,0.02);
+}
+
+.page-wrap::before {
+    /* subtle torn edge / gutter shadow */
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 16px;
+    bottom: 16px;
+    width: 6px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04));
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.page-wrap h1 {
+    margin-bottom: 12px;
+    font-size: 2.2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: #111;
+}
+
+.page-wrap .poem {
+    color: #fff;
+    font-weight: 300;
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-top: 8px;
+}
+
+.page-wrap .poem p { margin-bottom: 18px; }
+
+.back-link { display:inline-block; margin-top:22px; text-decoration:none; color:var(--muted); }
+.back-link:hover { color: var(--fg); }

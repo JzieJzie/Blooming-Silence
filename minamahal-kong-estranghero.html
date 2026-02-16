@@ -13,55 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <script>
-        function navigateToIndex() {
-            document.body.style.transition = "opacity 500ms cubic-bezier(0.4, 0, 0.2, 1)";
-            document.body.style.opacity = "0";
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 500);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced image loading
-            const image = document.querySelector('.reflection-image');
-            if (image) {
-                image.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
-                
-                // Fallback if image fails to load
-                image.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    console.warn('Reflection image failed to load');
-                });
-            }
-
-            // Smooth scroll for long content
-            const textBox = document.querySelector('.text-box');
-            if (textBox && textBox.scrollHeight > textBox.clientHeight) {
-                textBox.style.overflowY = 'auto';
-                textBox.style.scrollBehavior = 'smooth';
-            }
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    navigateToIndex();
-                }
-            });
-        });
-    </script>
+    <script defer src="script.js"></script>
 </head>
-<body class="fade-in">
-    <div class="container">
-        <img src="Images/mke-image.png" 
-             alt="Reflection on love and discovery" 
-             class="reflection-image"
-             loading="lazy"
-             style="opacity: 0; transition: opacity 0.5s ease;" />
-        
-        <div class="text-box fade-in">
+<body>
+    <main class="page-wrap">
+        <h1>Minamahal Kong Estranghero</h1>
+        <div class="poem">
             <p>
                 With the passage of time, a fresh view has gradually come into perspective, unveiling something that I once passed by without even looking back. Something that was at the fringes of my mind is now at the center of my focus. Where previously I may have dismissed the little things that make you who you are, now they stand out to me in ways I never thought possible. Something within me has changed, and the way I perceive you has entirely shifted, though I'm not sure how to put it into words.
             </p>
@@ -72,22 +29,10 @@
                 I don't just want to see the outline of your life anymore; I want to understand the heart of it—the quiet details that shape your world. It is not a craving stimulated by mere interest, but by deeper attraction, a feeling that you are more than I ever dreamed. And with that discovery, I can barely wait to embark on a journey of discovery, to behold the true, unspoken beauty of all that you truly are.
             </p>
         </div>
-        
-        <div class="button-container">
-            <button onclick="navigateToIndex()" 
-                    class="button return" 
-                    aria-label="Return to main menu">
-                Return?
-            </button>
-        </div>
-    </div>
-    
-    <a href="https://www.instagram.com/ddd.j_a.v?igsh=bjVtM2pkeW5qdmgy" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="credit-button" 
-       aria-label="Visit Instagram profile @ddd.j_a.v">
-        IG: @ddd.j_a.v
-    </a>
+        <a onclick="goToPoem('index.html'); return false;" href="#" class="back-link">← Back to Library</a>
+    </main>
+    <footer class="credit">IG: <a href="https://www.instagram.com/ddd.j_a.v?igsh=bjVtM2pkeW5qdmgy" target="_blank" rel="noopener noreferrer" style="color:var(--muted)">@ddd.j_a.v</a></footer>
+</body>
+</html>
 </body>
 </html>
