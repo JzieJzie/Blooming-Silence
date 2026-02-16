@@ -9,8 +9,8 @@
 body, html {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    background: #fffdd0;
-    color: #000000;
+    background: #000000;
+    color: #ffffff;
     text-align: center;
     overflow: hidden;
     height: 100vh;
@@ -36,7 +36,7 @@ body, html {
     font-size: 3rem;
     font-weight: 300;
     margin-bottom: 60px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .parallax-wrapper {
@@ -79,7 +79,7 @@ body, html {
     font-size: 2rem;
     font-weight: 300;
     margin-bottom: 20px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .clickable-title {
@@ -110,7 +110,7 @@ body, html {
 
 .arrow-btn {
     background: transparent;
-    color: #000000;
+    color: #ffffff;
     font-size: 2rem;
     font-weight: 300;
     width: 60px;
@@ -136,20 +136,20 @@ body, html {
 .indicator {
     width: 8px;
     height: 8px;
-    background: #333333;
+    background: #666666;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .indicator.active {
-    background: #000000;
+    background: #ffffff;
 }
 
 .read-button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     background: transparent;
-    color: #000000;
+    color: #ffffff;
     font-size: 1.2rem;
     padding: 15px 40px;
     cursor: pointer;
@@ -176,14 +176,14 @@ body, html {
     font-size: 3rem;
     font-weight: 300;
     margin-bottom: 40px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .poem-button, .button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     background: transparent;
-    color: #000000;
+    color: #ffffff;
     font-size: 1.2rem;
     padding: 15px 30px;
     cursor: pointer;
@@ -242,7 +242,7 @@ body, html {
 
 .return {
     background: transparent;
-    color: #000000;
+    color: #ffffff;
     font-weight: 300;
     border: none;
 }
@@ -257,7 +257,7 @@ body, html {
     left: 20px;
     font-size: 0.9rem;
     font-weight: 300;
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
 }
 
